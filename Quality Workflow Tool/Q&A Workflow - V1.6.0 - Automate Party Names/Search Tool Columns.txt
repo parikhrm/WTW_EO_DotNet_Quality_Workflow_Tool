@@ -1,0 +1,10 @@
+Process Type
+,DRD Process
+,Approval Team
+Check Start Date,Check Completed Date
+,Associate Name
+,Requestor Business Unit
+,Principle Type	Principal Name	Party Name	Category
+			
+
+

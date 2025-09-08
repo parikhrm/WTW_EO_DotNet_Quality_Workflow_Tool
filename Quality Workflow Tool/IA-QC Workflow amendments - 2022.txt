@@ -1,0 +1,8 @@
+1. Power BI report - region wise and manager wise QC scores (quality%)
+		     graph for breaches
+                     graph of qc scores (quality%) process wise
+2. Raise dispute : create a check box
+                   comments box to be updated by LM
+		   drop down as Valid and Invalid for Hari
+                   comments box for Hari
+3. Email Notification : automate email notification, cc should be his manager

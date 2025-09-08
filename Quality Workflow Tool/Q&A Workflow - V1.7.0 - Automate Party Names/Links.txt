@@ -1,0 +1,3 @@
+Share point main link to access documents stored on share point
+
+http://connect-eu.willis.com/ukdataref/MI%20%20Data%20Ref%20Admin/Forms/AllItems.aspx

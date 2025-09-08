@@ -1,0 +1,14 @@
+Entity report procedure followed correctly (Willis Re) - {Critical}
+Check correctly done / Partially done / Missed - {Critical}
+Matches discounted correctly - {Critical}
+Approvals raised / Intimated to BU correctly and timely - {Critical}
+Approvals received / Intimated to BU correctly and timely - {Critical}
+Sanctions procedure followed - {Critical}
+ODD / SMSO / PEP referral followed correctly - {Critical}
+Result send to BU correctly - {Critical}
+Reports Saved / Sent correctly - {Critical}
+Additional information requested from BU correctly - {Minor}
+Previous approval used - {Minor}
+Mail formatted correctly - {Minor}
+Additional information / Approvals saved correctly - {Minor}
+Workflow updated correctly and timely - {Minor}

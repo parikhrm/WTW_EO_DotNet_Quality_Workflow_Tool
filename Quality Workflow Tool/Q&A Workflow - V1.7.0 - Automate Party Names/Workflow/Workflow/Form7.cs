@@ -53,7 +53,7 @@ namespace Workflow
             conn.Open();
             cmd.Connection = conn;
             cmd.Parameters.Clear();
-            cmd.CommandText = "select top 100 RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID from dbo.tbl_approvals_daily_dotnet with(nolock) where ProcessType not like '%qc%' and isdeleted = 0 ";
+            cmd.CommandText = "select top 100 RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where ProcessType not like '%qc%' and isdeleted = 0 ";
             sda.SelectCommand = cmd;
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -72,7 +72,7 @@ namespace Workflow
             conn.Open();
             cmd.Connection = conn;
             cmd.Parameters.Clear();
-            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID from dbo.tbl_approvals_daily_dotnet with(nolock) where riskid like @riskidparam and ProcessType not like '%qc%' and isdeleted = 0";
+            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where riskid like @riskidparam and ProcessType not like '%qc%' and isdeleted = 0";
             cmd.Parameters.AddWithValue("@riskidparam","%" + riskid.Text + "%");
             sda.SelectCommand = cmd;
             sda.Fill(dt);
@@ -92,7 +92,7 @@ namespace Workflow
             conn.Open();
             cmd.Connection = conn;
             cmd.Parameters.Clear();
-            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID from dbo.tbl_approvals_daily_dotnet with(nolock) where pf_gcid like @pf_gcid and ProcessType not like '%qc%' and isdeleted = 0";
+            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where pf_gcid like @pf_gcid and ProcessType not like '%qc%' and isdeleted = 0";
             cmd.Parameters.AddWithValue("pf_gcid", "%" + pf_gcid.Text + "%");
             sda.SelectCommand = cmd;
             sda.Fill(dt);
@@ -112,7 +112,7 @@ namespace Workflow
             conn.Open();
             cmd.Connection = conn;
             cmd.Parameters.Clear();
-            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID from dbo.tbl_approvals_daily_dotnet with(nolock) where PrincipalName like @principlenameparam and ProcessType not like '%qc%' and isdeleted = 0";
+            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where PrincipalName like @principlenameparam and ProcessType not like '%qc%' and isdeleted = 0";
             cmd.Parameters.AddWithValue("@principlenameparam", "%" + principlename.Text + "%");
             sda.SelectCommand = cmd;
             sda.Fill(dt);

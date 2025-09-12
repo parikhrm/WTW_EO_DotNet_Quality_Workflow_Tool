@@ -1378,3 +1378,32 @@ C:\Users\ParikhRm\OneDrive - Willis Towers Watson\Azure - EO - Projects\Dot Net 
 C:\Users\ParikhRm\OneDrive - Willis Towers Watson\Azure - EO - Projects\Dot Net Projects\TCTO_2025\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Properties.Resources.resources
 C:\Users\ParikhRm\OneDrive - Willis Towers Watson\Azure - EO - Projects\Dot Net Projects\TCTO_2025\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.SearchTool_New_DataMart.resources
 C:\Users\ParikhRm\OneDrive - Willis Towers Watson\Azure - EO - Projects\Dot Net Projects\TCTO_2025\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.csproj.GenerateResource.Cache
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Workflow.exe.config
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Workflow.exe
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Workflow.pdb
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.csproj.AssemblyReference.cache
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Batch_OMS_Bulk_Upload.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Error_Dispute_Tracker.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form1.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form10.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form11.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form12.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form2.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form3.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form4.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form5.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form6.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form7.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form8.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Form9.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Properties.Resources.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.SearchTool_New_DataMart.resources
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.csproj.GenerateResource.cache
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.csproj.CoreCompileInputs.cache
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.csproj.Up2Date
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.exe
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.pdb

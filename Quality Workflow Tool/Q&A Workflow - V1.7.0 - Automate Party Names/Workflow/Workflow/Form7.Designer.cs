@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.riskid = new System.Windows.Forms.TextBox();
-            this.principlename = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtrequestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtprocesstype = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtapprovalteamname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +46,14 @@
             this.txtriskid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtRiskCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEntityID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.riskid = new System.Windows.Forms.TextBox();
+            this.principlename = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pf_gcid = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,9 +87,154 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(1699, 811);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // txtrequestID
+            // 
+            this.txtrequestID.DataPropertyName = "RequestID";
+            this.txtrequestID.HeaderText = "RequestID";
+            this.txtrequestID.MinimumWidth = 8;
+            this.txtrequestID.Name = "txtrequestID";
+            this.txtrequestID.ReadOnly = true;
+            this.txtrequestID.Width = 150;
+            // 
+            // txtprocesstype
+            // 
+            this.txtprocesstype.DataPropertyName = "ProcessType";
+            this.txtprocesstype.HeaderText = "ProcessType";
+            this.txtprocesstype.MinimumWidth = 8;
+            this.txtprocesstype.Name = "txtprocesstype";
+            this.txtprocesstype.ReadOnly = true;
+            this.txtprocesstype.Width = 150;
+            // 
+            // txtapprovalteamname
+            // 
+            this.txtapprovalteamname.DataPropertyName = "ApprovalTeam";
+            this.txtapprovalteamname.HeaderText = "ApprovalTeamName";
+            this.txtapprovalteamname.MinimumWidth = 8;
+            this.txtapprovalteamname.Name = "txtapprovalteamname";
+            this.txtapprovalteamname.ReadOnly = true;
+            this.txtapprovalteamname.Width = 150;
+            // 
+            // txtreceiveddate
+            // 
+            this.txtreceiveddate.DataPropertyName = "ReceivedDate";
+            this.txtreceiveddate.HeaderText = "ReceivedDate";
+            this.txtreceiveddate.MinimumWidth = 8;
+            this.txtreceiveddate.Name = "txtreceiveddate";
+            this.txtreceiveddate.ReadOnly = true;
+            this.txtreceiveddate.Width = 150;
+            // 
+            // txtreceivedtime
+            // 
+            this.txtreceivedtime.DataPropertyName = "ReceivedTime";
+            this.txtreceivedtime.HeaderText = "ReceivedTime";
+            this.txtreceivedtime.MinimumWidth = 8;
+            this.txtreceivedtime.Name = "txtreceivedtime";
+            this.txtreceivedtime.ReadOnly = true;
+            this.txtreceivedtime.Width = 150;
+            // 
+            // txtcompletiondate
+            // 
+            this.txtcompletiondate.DataPropertyName = "CompletionDate";
+            this.txtcompletiondate.HeaderText = "CompletionDate";
+            this.txtcompletiondate.MinimumWidth = 8;
+            this.txtcompletiondate.Name = "txtcompletiondate";
+            this.txtcompletiondate.ReadOnly = true;
+            this.txtcompletiondate.Width = 150;
+            // 
+            // txtcompletiontime
+            // 
+            this.txtcompletiontime.DataPropertyName = "CompletionTime";
+            this.txtcompletiontime.HeaderText = "CompletionTime";
+            this.txtcompletiontime.MinimumWidth = 8;
+            this.txtcompletiontime.Name = "txtcompletiontime";
+            this.txtcompletiontime.ReadOnly = true;
+            this.txtcompletiontime.Width = 150;
+            // 
+            // txtassociatename
+            // 
+            this.txtassociatename.DataPropertyName = "AssociateName";
+            this.txtassociatename.HeaderText = "AssociateName";
+            this.txtassociatename.MinimumWidth = 8;
+            this.txtassociatename.Name = "txtassociatename";
+            this.txtassociatename.ReadOnly = true;
+            this.txtassociatename.Width = 150;
+            // 
+            // txtrequestorbusinessunit
+            // 
+            this.txtrequestorbusinessunit.DataPropertyName = "RequestorBusinessUnit";
+            this.txtrequestorbusinessunit.HeaderText = "RequestorBusinessUnit";
+            this.txtrequestorbusinessunit.MinimumWidth = 8;
+            this.txtrequestorbusinessunit.Name = "txtrequestorbusinessunit";
+            this.txtrequestorbusinessunit.ReadOnly = true;
+            this.txtrequestorbusinessunit.Width = 150;
+            // 
+            // txtprinciplename
+            // 
+            this.txtprinciplename.DataPropertyName = "PrincipalName";
+            this.txtprinciplename.HeaderText = "PrincipleName";
+            this.txtprinciplename.MinimumWidth = 8;
+            this.txtprinciplename.Name = "txtprinciplename";
+            this.txtprinciplename.ReadOnly = true;
+            this.txtprinciplename.Width = 150;
+            // 
+            // txtpartyname
+            // 
+            this.txtpartyname.DataPropertyName = "PartyName";
+            this.txtpartyname.HeaderText = "PartyName";
+            this.txtpartyname.MinimumWidth = 8;
+            this.txtpartyname.Name = "txtpartyname";
+            this.txtpartyname.ReadOnly = true;
+            this.txtpartyname.Width = 150;
+            // 
+            // txtcategory
+            // 
+            this.txtcategory.DataPropertyName = "Category";
+            this.txtcategory.HeaderText = "Category";
+            this.txtcategory.MinimumWidth = 8;
+            this.txtcategory.Name = "txtcategory";
+            this.txtcategory.ReadOnly = true;
+            this.txtcategory.Width = 150;
+            // 
+            // txtprincipletype
+            // 
+            this.txtprincipletype.DataPropertyName = "PrincipleType";
+            this.txtprincipletype.HeaderText = "PrincipleType";
+            this.txtprincipletype.MinimumWidth = 8;
+            this.txtprincipletype.Name = "txtprincipletype";
+            this.txtprincipletype.ReadOnly = true;
+            this.txtprincipletype.Width = 150;
+            // 
+            // txtriskid
+            // 
+            this.txtriskid.DataPropertyName = "RiskID";
+            this.txtriskid.HeaderText = "RiskID";
+            this.txtriskid.MinimumWidth = 8;
+            this.txtriskid.Name = "txtriskid";
+            this.txtriskid.ReadOnly = true;
+            this.txtriskid.Width = 150;
+            // 
+            // txtRiskCategory
+            // 
+            this.txtRiskCategory.DataPropertyName = "RiskCategory";
+            this.txtRiskCategory.HeaderText = "RiskCategory";
+            this.txtRiskCategory.MinimumWidth = 8;
+            this.txtRiskCategory.Name = "txtRiskCategory";
+            this.txtRiskCategory.ReadOnly = true;
+            this.txtRiskCategory.Width = 150;
+            // 
+            // txtEntityID
+            // 
+            this.txtEntityID.DataPropertyName = "EntityID";
+            this.txtEntityID.HeaderText = "EntityID";
+            this.txtEntityID.MinimumWidth = 8;
+            this.txtEntityID.Name = "txtEntityID";
+            this.txtEntityID.ReadOnly = true;
+            this.txtEntityID.Width = 150;
             // 
             // button1
             // 
@@ -143,6 +290,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.pf_gcid);
             this.groupBox1.Controls.Add(this.riskid);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -151,121 +300,27 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(585, 154);
+            this.groupBox1.Size = new System.Drawing.Size(923, 154);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // txtrequestID
+            // pf_gcid
             // 
-            this.txtrequestID.DataPropertyName = "RequestID";
-            this.txtrequestID.HeaderText = "RequestID";
-            this.txtrequestID.Name = "txtrequestID";
-            this.txtrequestID.ReadOnly = true;
+            this.pf_gcid.Location = new System.Drawing.Point(566, 46);
+            this.pf_gcid.Name = "pf_gcid";
+            this.pf_gcid.Size = new System.Drawing.Size(228, 26);
+            this.pf_gcid.TabIndex = 71;
+            this.pf_gcid.TextChanged += new System.EventHandler(this.pf_gcid_TextChanged);
             // 
-            // txtprocesstype
+            // label3
             // 
-            this.txtprocesstype.DataPropertyName = "ProcessType";
-            this.txtprocesstype.HeaderText = "ProcessType";
-            this.txtprocesstype.Name = "txtprocesstype";
-            this.txtprocesstype.ReadOnly = true;
-            // 
-            // txtapprovalteamname
-            // 
-            this.txtapprovalteamname.DataPropertyName = "ApprovalTeam";
-            this.txtapprovalteamname.HeaderText = "ApprovalTeamName";
-            this.txtapprovalteamname.Name = "txtapprovalteamname";
-            this.txtapprovalteamname.ReadOnly = true;
-            // 
-            // txtreceiveddate
-            // 
-            this.txtreceiveddate.DataPropertyName = "ReceivedDate";
-            this.txtreceiveddate.HeaderText = "ReceivedDate";
-            this.txtreceiveddate.Name = "txtreceiveddate";
-            this.txtreceiveddate.ReadOnly = true;
-            // 
-            // txtreceivedtime
-            // 
-            this.txtreceivedtime.DataPropertyName = "ReceivedTime";
-            this.txtreceivedtime.HeaderText = "ReceivedTime";
-            this.txtreceivedtime.Name = "txtreceivedtime";
-            this.txtreceivedtime.ReadOnly = true;
-            // 
-            // txtcompletiondate
-            // 
-            this.txtcompletiondate.DataPropertyName = "CompletionDate";
-            this.txtcompletiondate.HeaderText = "CompletionDate";
-            this.txtcompletiondate.Name = "txtcompletiondate";
-            this.txtcompletiondate.ReadOnly = true;
-            // 
-            // txtcompletiontime
-            // 
-            this.txtcompletiontime.DataPropertyName = "CompletionTime";
-            this.txtcompletiontime.HeaderText = "CompletionTime";
-            this.txtcompletiontime.Name = "txtcompletiontime";
-            this.txtcompletiontime.ReadOnly = true;
-            // 
-            // txtassociatename
-            // 
-            this.txtassociatename.DataPropertyName = "AssociateName";
-            this.txtassociatename.HeaderText = "AssociateName";
-            this.txtassociatename.Name = "txtassociatename";
-            this.txtassociatename.ReadOnly = true;
-            // 
-            // txtrequestorbusinessunit
-            // 
-            this.txtrequestorbusinessunit.DataPropertyName = "RequestorBusinessUnit";
-            this.txtrequestorbusinessunit.HeaderText = "RequestorBusinessUnit";
-            this.txtrequestorbusinessunit.Name = "txtrequestorbusinessunit";
-            this.txtrequestorbusinessunit.ReadOnly = true;
-            // 
-            // txtprinciplename
-            // 
-            this.txtprinciplename.DataPropertyName = "PrincipalName";
-            this.txtprinciplename.HeaderText = "PrincipleName";
-            this.txtprinciplename.Name = "txtprinciplename";
-            this.txtprinciplename.ReadOnly = true;
-            // 
-            // txtpartyname
-            // 
-            this.txtpartyname.DataPropertyName = "PartyName";
-            this.txtpartyname.HeaderText = "PartyName";
-            this.txtpartyname.Name = "txtpartyname";
-            this.txtpartyname.ReadOnly = true;
-            // 
-            // txtcategory
-            // 
-            this.txtcategory.DataPropertyName = "Category";
-            this.txtcategory.HeaderText = "Category";
-            this.txtcategory.Name = "txtcategory";
-            this.txtcategory.ReadOnly = true;
-            // 
-            // txtprincipletype
-            // 
-            this.txtprincipletype.DataPropertyName = "PrincipleType";
-            this.txtprincipletype.HeaderText = "PrincipleType";
-            this.txtprincipletype.Name = "txtprincipletype";
-            this.txtprincipletype.ReadOnly = true;
-            // 
-            // txtriskid
-            // 
-            this.txtriskid.DataPropertyName = "RiskID";
-            this.txtriskid.HeaderText = "RiskID";
-            this.txtriskid.Name = "txtriskid";
-            this.txtriskid.ReadOnly = true;
-            // 
-            // txtRiskCategory
-            // 
-            this.txtRiskCategory.DataPropertyName = "RiskCategory";
-            this.txtRiskCategory.HeaderText = "RiskCategory";
-            this.txtRiskCategory.Name = "txtRiskCategory";
-            this.txtRiskCategory.ReadOnly = true;
-            // 
-            // txtEntityID
-            // 
-            this.txtEntityID.DataPropertyName = "EntityID";
-            this.txtEntityID.HeaderText = "EntityID";
-            this.txtEntityID.Name = "txtEntityID";
-            this.txtEntityID.ReadOnly = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(621, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 20);
+            this.label3.TabIndex = 72;
+            this.label3.Text = "PF - GCID";
             // 
             // Form7
             // 
@@ -314,6 +369,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtriskid;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtRiskCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtEntityID;
-
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox pf_gcid;
     }
 }

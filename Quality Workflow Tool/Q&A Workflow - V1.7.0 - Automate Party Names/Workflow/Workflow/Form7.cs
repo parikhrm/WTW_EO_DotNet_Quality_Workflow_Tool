@@ -80,6 +80,26 @@ namespace Workflow
             conn.Close();
         }
 
+        public void datagridview1_display_pf_gcid()
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            SqlDataAdapter sda = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            conn.ConnectionString = connectionstringtxt;
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.Parameters.Clear();
+            cmd.CommandText = "select RequestID,ProcessType,DRDProcess,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipleType,PrincipalName,PartyName,Category,RiskID,BatchID,PartyLocation,RiskCategory,EntityID from dbo.tbl_approvals_daily_dotnet with(nolock) where pf_gcid like @pf_gcid and ProcessType not like '%qc%' and isdeleted = 0";
+            cmd.Parameters.AddWithValue("pf_gcid", "%" + pf_gcid.Text + "%");
+            sda.SelectCommand = cmd;
+            sda.Fill(dt);
+            dataGridView1.DataSource = dt;
+            conn.Close();
+        }
+
         public void datagridview1_display_principlename()
         {
             if (conn.State == ConnectionState.Open)
@@ -125,6 +145,23 @@ namespace Workflow
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pf_gcid_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(riskid.Text))
+            {
+                datagridview1_display_overall();
+            }
+            else
+            {
+                datagridview1_display_pf_gcid();
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

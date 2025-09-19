@@ -511,7 +511,7 @@
             this.insert.Location = new System.Drawing.Point(24, 614);
             this.insert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.insert.Name = "insert";
-            this.insert.Size = new System.Drawing.Size(96, 54);
+            this.insert.Size = new System.Drawing.Size(118, 54);
             this.insert.TabIndex = 61;
             this.insert.Text = "Insert";
             this.insert.UseVisualStyleBackColor = true;
@@ -696,10 +696,10 @@
             // reset
             // 
             this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reset.Location = new System.Drawing.Point(226, 614);
+            this.reset.Location = new System.Drawing.Point(266, 614);
             this.reset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(98, 53);
+            this.reset.Size = new System.Drawing.Size(117, 53);
             this.reset.TabIndex = 63;
             this.reset.Text = "Reset";
             this.reset.UseVisualStyleBackColor = true;
@@ -708,10 +708,10 @@
             // update
             // 
             this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.update.Location = new System.Drawing.Point(126, 614);
+            this.update.Location = new System.Drawing.Point(152, 614);
             this.update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.update.Name = "update";
-            this.update.Size = new System.Drawing.Size(94, 54);
+            this.update.Size = new System.Drawing.Size(108, 54);
             this.update.TabIndex = 62;
             this.update.Text = "Update";
             this.update.UseVisualStyleBackColor = true;

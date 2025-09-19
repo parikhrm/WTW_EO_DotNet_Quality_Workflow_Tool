@@ -1981,6 +1981,8 @@ namespace Workflow
                     //cmd.CommandText = "update tbl_approvals_daily_dotnet set processtype=@processtypeparam,drdprocess=@drdprocessparam,approvalteam=@approvalteamnameparam,receiveddate=@receiveddateparam,receivedtime=@receivedtimeparam,completiondate=@completiondateparam,completiontime=@completiontimeparam,noofemails=@noofemailsparam,associatename=@associatenameparam,requestorbusinessunit=@requestorbusinessunitparam,partyname=@partynameparam,principalname=@principalnameparam,category=@categorynameparam,noofrecords=@noofrecordsparam,TypeofBreaches=@typeofbreachesparam,FeedbackGiven=@feedbackgivenparam,TypeofError=@typeoferrorparam,NoofCriticalErrors=@noofcriticalerrorsparam,NoofMinorErrors=@noofminorerrorsparam,Comments=@commentsparam,CorrectiveActionTaken=@correctiveactiontakenparam,CorrectiveActionDate=@correctiveactiondateparam,CorrectiveActionTime=@correctiveactiontimeparam,CorrectiveActionComments=@correctiveactioncommentsparam,ReasonsforDisagreement=@reasonsfordisagreementparam,lastupdatedatetime=@lastupdatedatetimeparam,isdeleted=@isdeletedparam,machinename=@machinenameparam,principletype=@principletypeparam,riskid=@riskidparam,qualityparameters=@qualityparametersparam,BatchID=@BatchIDparam,PartyLocation=@PartyLocationparam,RiskCategory=@RiskCategory,EventCodes=@EventCodes where 1=1 and requestid=@requestidparam";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "dbo.usp_approvals_update_dotnet";
+                    cmd.Parameters.Add("@Message", SqlDbType.NVarChar, 1000);
+                    cmd.Parameters["@Message"].Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("@requestidparam", requestid.Text);
                     cmd.Parameters.AddWithValue("@processtypeparam", processtype.Text);
                     cmd.Parameters.AddWithValue("@drdprocessparam", drdprocess.Text);
@@ -2313,7 +2315,9 @@ namespace Workflow
                     {
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Record Updated Successfully");
+                        string uploadmessage = cmd.Parameters["@Message"].Value.ToString();
+                        MessageBox.Show("" + uploadmessage.ToString());
+                        //MessageBox.Show("Record Updated Successfully");
                         cmd.Parameters.Clear();
                         reset_overall();
                         conn.Close();
@@ -2576,6 +2580,14 @@ namespace Workflow
                     else
                     {
                         eventcodes.Text = row.Cells["txteventcodes"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtPF_GCID"].Value.ToString()))
+                    {
+                        pf_gcid.Text = string.Empty;
+                    }
+                    else
+                    {
+                        pf_gcid.Text = row.Cells["txtPF_GCID"].Value.ToString();
                     }
                     if (string.IsNullOrEmpty(row.Cells["txtapprovalreceivedfromdesginatedsmsoapprover"].Value.ToString()))
                     {

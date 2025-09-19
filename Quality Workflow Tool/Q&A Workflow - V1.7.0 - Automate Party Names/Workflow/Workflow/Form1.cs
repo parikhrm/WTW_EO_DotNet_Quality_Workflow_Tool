@@ -1598,6 +1598,8 @@ namespace Workflow
                         //cmd.CommandText = "insert into tbl_approvals_daily_dotnet(processtype,drdprocess,approvalteam,receiveddate,receivedtime,completiondate,completiontime,noofemails,associatename,requestorbusinessunit,partyname,principalname,category,noofrecords,qualityparameters,TypeofBreaches,FeedbackGiven,TypeofError,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,lastupdatedatetime,isdeleted,machinename,principletype,riskid,BatchID,PartyLocation,RiskCategory,EventCodes) values (@processtypeparam,@drdprocessparam,@approvalteamnameparam,@receiveddateparam,@receivedtimeparam,@completiondateparam,@completiontimeparam,@noofemailsparam,@associatenameparam,@requestorbusinessunitparam,@partynameparam,@principalnameparam,@categorynameparam,@noofrecordsparam,@qualityparametersparam,@typeofbreachesparam,@feedbackgivenparam,@typeoferrorparam,@noofcriticalerrorsparam,@noofminorerrorsparam,@commentsparam,@correctiveactiontakenparam,@correctiveactiondateparam,@correctiveactiontimeparam,@correctiveactioncommentsparam,@reasonsfordisagreementparam,@lastupdatedatetimeparam,@isdeletedparam,@machinenameparam,@principletypeparam,@riskidparam,@BatchIDparam,@PartyLocationparam,@RiskCategory,@EventCodes)";
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "dbo.usp_approvals_insert_dotnet";
+                        cmd.Parameters.Add("@Message", SqlDbType.NVarChar, 1000);
+                        cmd.Parameters["@Message"].Direction = ParameterDirection.Output;
                         //if (!string.IsNullOrEmpty(batchworkflow_requestid.Text))
                         //{
                         //    cmd.Parameters.AddWithValue("@BatchWorkflow_RequestID", batchworkflow_requestid.Text);
@@ -1938,7 +1940,9 @@ namespace Workflow
 
                             conn.Open();
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Record Inserted Successfully");
+                            string uploadmessage = cmd.Parameters["@Message"].Value.ToString();
+                            MessageBox.Show("" + uploadmessage.ToString());
+                            //MessageBox.Show("Record Inserted Successfully");
                             cmd.Parameters.Clear();
                             reset_overall();
                             conn.Close();

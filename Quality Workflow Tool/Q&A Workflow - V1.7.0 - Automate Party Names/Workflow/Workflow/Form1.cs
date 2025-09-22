@@ -2435,14 +2435,14 @@ namespace Workflow
                     DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
                     datagridview1_cellclick.Text = row.Cells["txtrequestID"].Value.ToString();
                     requestid.Text = row.Cells["txtrequestID"].Value.ToString();
-                    if (string.IsNullOrEmpty(pf_gcid.Text))
-                    {
-                        pf_gcid.Text = string.Empty;
-                    }
-                    else
-                    {
-                        pf_gcid.Text = row.Cells["txtPF_GCID"].Value.ToString();
-                    }
+                    //if (string.IsNullOrEmpty(pf_gcid.Text))
+                    //{
+                    //    pf_gcid.Text = string.Empty;
+                    //}
+                    //else
+                    //{
+                    //    pf_gcid.Text = row.Cells["txtPF_GCID"].Value.ToString();
+                    //}
                     processtype.Text = row.Cells["txtprocesstype"].Value.ToString();
                     drdprocess.Text = row.Cells["txtdrdprocess"].Value.ToString();
                     receiveddate.Text = row.Cells["txtreceiveddate"].Value.ToString();

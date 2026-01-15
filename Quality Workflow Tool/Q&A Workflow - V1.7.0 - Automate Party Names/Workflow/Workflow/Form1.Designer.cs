@@ -536,6 +536,7 @@
             this.typeofbreach.Size = new System.Drawing.Size(202, 28);
             this.typeofbreach.TabIndex = 41;
             this.typeofbreach.DropDown += new System.EventHandler(this.typeofbreach_DropDown);
+            this.typeofbreach.SelectedIndexChanged += new System.EventHandler(this.typeofbreach_SelectedIndexChanged);
             this.typeofbreach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.typeofbreach_KeyDown);
             // 
             // label16
@@ -551,6 +552,9 @@
             // 
             this.feedbackgiven.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.feedbackgiven.FormattingEnabled = true;
+            this.feedbackgiven.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
             this.feedbackgiven.Location = new System.Drawing.Point(522, 378);
             this.feedbackgiven.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.feedbackgiven.Name = "feedbackgiven";
@@ -614,6 +618,9 @@
             // 
             this.correctiveactiontaken.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.correctiveactiontaken.FormattingEnabled = true;
+            this.correctiveactiontaken.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
             this.correctiveactiontaken.Location = new System.Drawing.Point(768, 452);
             this.correctiveactiontaken.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.correctiveactiontaken.Name = "correctiveactiontaken";

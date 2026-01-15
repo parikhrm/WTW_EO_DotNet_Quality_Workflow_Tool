@@ -35,39 +35,40 @@ namespace Workflow
             //this.tbl_emp_detailsTableAdapter.Fill(this.dRDDataSet1.tbl_emp_details);
             //// TODO: This line of code loads data into the 'dRDDataSet.tbl_approvalteamname_dotnet' table. You can move, or remove it, as needed.
             //this.tbl_approvalteamname_dotnetTableAdapter.Fill(this.dRDDataSet.tbl_approvalteamname_dotnet);
-            EmpDetails obj_empdetails = new EmpDetails();
-            ProcessType obj_processtype = new ProcessType();
-            EDSProcess obj_edsprocess = new EDSProcess();
-            CategoryName obj_categoryname = new CategoryName();
-            TypeOfBreaches obj_breaches = new TypeOfBreaches();
-            FeedBackGiven obj_feedback = new FeedBackGiven();
-            QueueName obj_queue = new QueueName();
-            TypeOfError obj_typeoferror = new TypeOfError();
-            QualityParameters obj_quality = new QualityParameters();
-            PrincipleType obj_principle = new PrincipleType();
-            RequestorBusinessUnit obj_bu = new RequestorBusinessUnit();
-            SourceCodes obj_sourcecode = new SourceCodes();
-            PartyLocation obj_partylocation = new PartyLocation();
-            EventCodes obj_evencode = new EventCodes();
-            RiskCategory obj_riskcategory = new RiskCategory();
+
+            //EmpDetails obj_empdetails = new EmpDetails();
+            //ProcessType obj_processtype = new ProcessType();
+            //EDSProcess obj_edsprocess = new EDSProcess();
+            //CategoryName obj_categoryname = new CategoryName();
+            //TypeOfBreaches obj_breaches = new TypeOfBreaches();
+            //FeedBackGiven obj_feedback = new FeedBackGiven();
+            //QueueName obj_queue = new QueueName();
+            //TypeOfError obj_typeoferror = new TypeOfError();
+            //QualityParameters obj_quality = new QualityParameters();
+            //PrincipleType obj_principle = new PrincipleType();
+            //RequestorBusinessUnit obj_bu = new RequestorBusinessUnit();
+            //SourceCodes obj_sourcecode = new SourceCodes();
+            //PartyLocation obj_partylocation = new PartyLocation();
+            //EventCodes obj_evencode = new EventCodes();
+            //RiskCategory obj_riskcategory = new RiskCategory();
             
 
             processtype_list();
             edsprocess_list();
             categoryname_list();
             typeofbreaches_list();
-            feedbackgiven_list();
+            //feedbackgiven_list();
             typeoferror_list();
-            correctiveactiontaken_list();
+            //correctiveactiontaken_list();
             principletype_list();
             empdetails_list();
             partylocation_list();
-            reset_overall();
             riskcategory_list();
             eventcodes_list();
-            batchworkflowqueuestatus_list();
+            //atchworkflowqueuestatus_list();
             datagridview1_display_overall();
-            datagridview_batch_approvalsqueue_overall();
+            //datagridview_batch_approvalsqueue_overall();
+            reset_overall();
         }
 
         public void ToCsV(DataGridView dGV, string filename)
@@ -881,7 +882,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and convert(date,ReceivedDate) between convert(date,dateadd(dd,-4,getdate())) and convert(date,getdate()) and approvalteam = @intidparam order by RequestID asc";
+                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and convert(date,ReceivedDate) between convert(date,dateadd(dd,-4,getdate())) and convert(date,getdate()) and approvalteam = @intidparam order by RequestID desc";
                 cmd.Parameters.AddWithValue("@intidparam",Environment.UserName.ToString());
                 cmd.ExecuteNonQuery();
                 sda.SelectCommand = cmd;
@@ -1114,7 +1115,7 @@ namespace Workflow
                     conn.Open();
                     cmd.Parameters.Clear();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select EmpName from vw_emp_details_dotnet where empname like @empname order by EmpName asc";
+                    cmd.CommandText = "select EmpName from dbo.vw_emp_details_dotnet where empname like @empname order by EmpName asc";
                     cmd.Parameters.AddWithValue("@empname", "%" + associatename.Text + "%");
                     cmd.ExecuteNonQuery();
                     sda.SelectCommand = cmd;
@@ -1185,7 +1186,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and riskid like @riskidparam order by RequestID asc";
+                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and riskid like @riskidparam order by RequestID desc";
                 //cmd.Parameters.AddWithValue("@intidparam", Environment.UserName.ToString());
                 cmd.Parameters.AddWithValue("@riskidparam", "%" + riskid_search.Text + "%");
                 cmd.ExecuteNonQuery();
@@ -1217,7 +1218,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and partyname like @partynameparam order by RequestID asc";
+                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and partyname like @partynameparam and convert(date,ReceivedDate) >= convert(date,dateadd(dd,-60,getdate())) order by RequestID desc";
                 cmd.Parameters.AddWithValue("@partynameparam", "%" + partyname_search.Text + "%");
                 //cmd.Parameters.AddWithValue("@intidparam", Environment.UserName.ToString());
                 cmd.ExecuteNonQuery();
@@ -1249,7 +1250,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and batchid like @plcidbatchidparam order by RequestID asc";
+                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and batchid like @plcidbatchidparam and convert(date,ReceivedDate) >= convert(date,dateadd(dd,-60,getdate())) order by RequestID desc";
                 cmd.Parameters.AddWithValue("@plcidbatchidparam", "%" + plcidbatchid_search.Text + "%");
                 //cmd.Parameters.AddWithValue("@intidparam", Environment.UserName.ToString());
                 cmd.ExecuteNonQuery();
@@ -1281,7 +1282,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and associatename like @associatenameparam order by RequestID asc";
+                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and associatename like @associatenameparam and convert(date,ReceivedDate) >= convert(date,dateadd(dd,-60,getdate())) order by RequestID desc";
                 cmd.Parameters.AddWithValue("@associatenameparam", "%" + associatename_search.Text + "%");
                 //cmd.Parameters.AddWithValue("@intidparam", Environment.UserName.ToString());
                 cmd.ExecuteNonQuery();
@@ -1313,7 +1314,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and convert(bigint,requestid) like @requestidparam  order by RequestID asc";
+                cmd.CommandText = "select RequestID,ProcessType,ApprovalTeam,ReceivedDate,ReceivedTime,CompletionDate,CompletionTime,AssociateName,RequestorBusinessUnit,PrincipalName,PartyName,Category,TypeofBreaches,FeedbackGiven,TypeofError,DRDProcess,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,NoofEmails,LastUpdateDateTime,NoofRecords,QualityParameters,PrincipleType,RiskID,BatchID,PartyLocation,RiskCategory,EventCodes,ApprovalReceivedFromDesginatedSMSOApprover,EntityID,PF_GCID from dbo.tbl_approvals_daily_dotnet with(nolock) where 1=1 and isdeleted = 0 and convert(bigint,requestid) like @requestidparam and convert(date,ReceivedDate) >= convert(date,dateadd(dd,-60,getdate()))  order by RequestID desc";
                 cmd.Parameters.AddWithValue("@requestidparam", "%" + requestid_search.Text + "%");
                 //cmd.Parameters.AddWithValue("@intidparam", Environment.UserName.ToString());
                 cmd.ExecuteNonQuery();
@@ -3349,6 +3350,10 @@ namespace Workflow
                 MessageBox.Show("Error Generated Details: " + ab.ToString());
             }
         }
-  
+
+        private void typeofbreach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

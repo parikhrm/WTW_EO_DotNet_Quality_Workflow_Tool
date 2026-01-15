@@ -234,7 +234,7 @@
             // 
             this.qsptracker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.qsptracker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qsptracker.Location = new System.Drawing.Point(293, 263);
+            this.qsptracker.Location = new System.Drawing.Point(292, 263);
             this.qsptracker.Name = "qsptracker";
             this.qsptracker.Size = new System.Drawing.Size(227, 54);
             this.qsptracker.TabIndex = 13;
@@ -379,7 +379,7 @@
             // 
             this.workqueue_qualityandapprovals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.workqueue_qualityandapprovals.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workqueue_qualityandapprovals.Location = new System.Drawing.Point(293, 157);
+            this.workqueue_qualityandapprovals.Location = new System.Drawing.Point(292, 157);
             this.workqueue_qualityandapprovals.Name = "workqueue_qualityandapprovals";
             this.workqueue_qualityandapprovals.Size = new System.Drawing.Size(227, 54);
             this.workqueue_qualityandapprovals.TabIndex = 29;

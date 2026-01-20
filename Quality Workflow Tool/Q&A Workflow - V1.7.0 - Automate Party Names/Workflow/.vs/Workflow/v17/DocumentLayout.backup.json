@@ -1,69 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B45C6117-0D6E-4D62-8163-9172D4C4857D}|Workflow\\Workflow.csproj|c:\\users\\parikhrm\\source\\repos\\wtw_eo_dotnet_quality_workflow_tool\\quality workflow tool\\q\u0026a workflow - v1.7.0 - automate party names\\workflow\\workflow\\sanctions_qc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B45C6117-0D6E-4D62-8163-9172D4C4857D}|Workflow\\Workflow.csproj|solutionrelative:workflow\\sanctions_qc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B45C6117-0D6E-4D62-8163-9172D4C4857D}|Workflow\\Workflow.csproj|c:\\users\\parikhrm\\source\\repos\\wtw_eo_dotnet_quality_workflow_tool\\quality workflow tool\\q\u0026a workflow - v1.7.0 - automate party names\\workflow\\workflow\\sanctions_qc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B45C6117-0D6E-4D62-8163-9172D4C4857D}|Workflow\\Workflow.csproj|solutionrelative:workflow\\sanctions_qc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B45C6117-0D6E-4D62-8163-9172D4C4857D}|Workflow\\Workflow.csproj|c:\\users\\parikhrm\\source\\repos\\wtw_eo_dotnet_quality_workflow_tool\\quality workflow tool\\q\u0026a workflow - v1.7.0 - automate party names\\workflow\\workflow\\searchtool_new_datamart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B45C6117-0D6E-4D62-8163-9172D4C4857D}|Workflow\\Workflow.csproj|solutionrelative:workflow\\searchtool_new_datamart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Sanctions_QC.cs",
-              "DocumentMoniker": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\Workflow\\Sanctions_QC.cs",
-              "RelativeDocumentMoniker": "Workflow\\Sanctions_QC.cs",
-              "ToolTip": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\Workflow\\Sanctions_QC.cs",
-              "RelativeToolTip": "Workflow\\Sanctions_QC.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAEwBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T15:02:56.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SearchTool_New_DataMart.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\Workflow\\SearchTool_New_DataMart.cs",
-              "RelativeDocumentMoniker": "Workflow\\SearchTool_New_DataMart.cs",
-              "ToolTip": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\Workflow\\SearchTool_New_DataMart.cs [Design]",
-              "RelativeToolTip": "Workflow\\SearchTool_New_DataMart.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T14:55:58.245Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Sanctions_QC.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\Workflow\\Sanctions_QC.cs",
-              "RelativeDocumentMoniker": "Workflow\\Sanctions_QC.cs",
-              "ToolTip": "C:\\Users\\parikhrm\\source\\repos\\WTW_EO_DotNet_Quality_Workflow_Tool\\Quality Workflow Tool\\Q\u0026A Workflow - V1.7.0 - Automate Party Names\\Workflow\\Workflow\\Sanctions_QC.cs [Design]",
-              "RelativeToolTip": "Workflow\\Sanctions_QC.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T14:55:43.053Z",
-              "EditorCaption": " [Design]"
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

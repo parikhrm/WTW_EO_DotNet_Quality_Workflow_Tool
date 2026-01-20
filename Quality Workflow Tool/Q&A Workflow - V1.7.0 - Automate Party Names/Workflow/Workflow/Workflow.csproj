@@ -158,6 +158,7 @@
     <Compile Include="Form9.Designer.cs">
       <DependentUpon>Form9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global_Directory.cs" />
     <Compile Include="LineManager.cs" />
     <Compile Include="PartyLocation.cs" />
     <Compile Include="PrincipleType.cs" />

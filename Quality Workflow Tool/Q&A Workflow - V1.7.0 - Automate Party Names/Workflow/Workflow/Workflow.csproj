@@ -169,6 +169,12 @@
     <Compile Include="QueueName.cs" />
     <Compile Include="RequestorBusinessUnit.cs" />
     <Compile Include="RiskCategory.cs" />
+    <Compile Include="Sanctions_QC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sanctions_QC.Designer.cs">
+      <DependentUpon>Sanctions_QC.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchTool_New_DataMart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sanctions_QC.resx">
+      <DependentUpon>Sanctions_QC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchTool_New_DataMart.resx">
       <DependentUpon>SearchTool_New_DataMart.cs</DependentUpon>
     </EmbeddedResource>

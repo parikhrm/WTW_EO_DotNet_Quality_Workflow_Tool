@@ -1407,3 +1407,4 @@ C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workf
 C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.csproj.Up2Date
 C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.exe
 C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.pdb
+C:\Users\parikhrm\source\repos\WTW_EO_DotNet_Quality_Workflow_Tool\Quality Workflow Tool\Q&A Workflow - V1.7.0 - Automate Party Names\Workflow\Workflow\obj\Debug\Workflow.Sanctions_QC.resources

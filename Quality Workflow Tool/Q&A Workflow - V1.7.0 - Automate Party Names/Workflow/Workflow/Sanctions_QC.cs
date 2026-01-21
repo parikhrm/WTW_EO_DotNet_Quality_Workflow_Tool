@@ -36,8 +36,8 @@ namespace Workflow
             party_name_lookup.SelectedIndex = -1;
             client_country_lookup.Visible = false;
             client_country_lookup.SelectedIndex = -1;
-            legal_entity_name_lookup.Visible=false;
-            legal_entity_name_lookup.SelectedIndex= -1;
+            legal_entity_name_lookup.Visible = false;
+            legal_entity_name_lookup.SelectedIndex = -1;
             id.Enabled = false;
             id.Text = string.Empty;
             process.SelectedIndex = -1;
@@ -63,6 +63,9 @@ namespace Workflow
             requestor_location.SelectedIndex = -1;
             sanctions_status.SelectedIndex = -1;
             comments.Text = string.Empty;
+            relationship_type.SelectedIndex = -1;
+            qc_status.SelectedIndex = -1;
+            sanctions_risk_status.SelectedIndex = -1;
             insert.Enabled = true;
             update.Enabled = false;
             datagridview_display_overall();
@@ -176,7 +179,7 @@ namespace Workflow
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "select * from dbo.vw_Globaldirectory_Upload_New where Requestor_Email_address = @Requestor_Email_address";
-                cmd.Parameters.AddWithValue("@Requestor_Email_address",requestor_email_address.Text);
+                cmd.Parameters.AddWithValue("@Requestor_Email_address", requestor_email_address.Text);
                 sda.SelectCommand = cmd;
                 sda.Fill(dt);
 
@@ -238,6 +241,41 @@ namespace Workflow
             }
         }
 
+        public void request_details_oms()
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            try
+            {
+                SqlDataAdapter sda = new SqlDataAdapter();
+                DataTable dt = new DataTable();
+                conn.ConnectionString = connectionstringtxt;
+                cmd.Connection = conn;
+                conn.Open();
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select a.RequestId,a.ResultName as PartyName, b.ShortName as CountryName from kycRequest_Request.Item a with(nolock) inner join [kycrequest_Ref].[Country] b with(nolock) on a.CountryCode = b.CountryAlpha2Code where a.RequestID = @RequestID";
+                cmd.Parameters.AddWithValue("@RequestID", requestid_batchid.Text);
+                sda.SelectCommand = cmd;
+                sda.Fill(dt);
+
+                party_name_lookup.DataSource = dt;
+                party_name_lookup.DisplayMember = "PartyName";
+                party_name.Text = party_name_lookup.Text;
+
+                client_country_lookup.DataSource = dt;
+                client_country_lookup.DisplayMember = "ClientCountry";
+                client_country.Text = client_country_lookup.Text;
+
+            }
+            catch (Exception ab)
+            {
+                MessageBox.Show("Error Generated Details : " + ab.ToString());
+            }
+        }
+
         public void datagridview_display_overall()
         {
             if (conn.State == ConnectionState.Open)
@@ -256,7 +294,7 @@ namespace Workflow
                 if (string.IsNullOrEmpty(searchby_requestid_batchid.Text))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select top 10 ID,Process,Month,RequestID_BatchID,GCID_TrackingID,WTW_Legal_Entity_Name,Party_Name,Principle_Name,Client_Country,Client_Risk_Category,Global_Sanctions,Type_Of_Global_Sanctions,Regional_Sanctions,Regional_Sanction_Type\r\n,Segment_Name\r\n,Sanctions_Identified_Date,Sanctions_Notified_Date,Request_Completion_Date,Requestor_Email_Address,LOB,Requestor_Location,Region,Sanctions_Status,Comments,Chaser1_Due_Date,Chaser2_Due_Date,Chaser1_Status,Chaser2_Status,LastUpdatedDateTime,LastUpdatedBy from dbo.tbl_sanctions_qc_daily_dotnet with(nolock) where IsDeleted = 0";
+                    cmd.CommandText = "select top 10 ID,Process,Month,RequestID_BatchID,GCID_TrackingID,WTW_Legal_Entity_Name,Party_Name,Principle_Name,Client_Country,Client_Risk_Category,Global_Sanctions,Type_Of_Global_Sanctions,Regional_Sanctions,Regional_Sanction_Type\r\n,Segment_Name\r\n,Sanctions_Identified_Date,Sanctions_Notified_Date,Request_Completion_Date,Requestor_Email_Address,LOB,Requestor_Location,Region,Sanctions_Status,Comments,Chaser1_Due_Date,Chaser2_Due_Date,Chaser1_Status,Chaser2_Status,LastUpdatedDateTime,LastUpdatedBy,Relationship_Type,QC_Status,Sanctions_Risk_Status from dbo.tbl_sanctions_qc_daily_dotnet with(nolock) where IsDeleted = 0";
                     cmd.Parameters.AddWithValue("@lastupdatedby", Environment.UserName.ToString());
                 }
                 else
@@ -360,30 +398,55 @@ namespace Workflow
                     cmd.Parameters.Add("@Message", SqlDbType.NVarChar, 1000);
                     cmd.Parameters["@Message"].Direction = ParameterDirection.Output;
 
-                    cmd.Parameters.AddWithValue("@Process",process.Text);
-                    cmd.Parameters.AddWithValue("@Month",month.Value.Date);
-                    cmd.Parameters.AddWithValue("@RequestID_BatchID",requestid_batchid.Text);
-                    cmd.Parameters.AddWithValue("@GCID_TrackingID",gcid_trackingid.Text);
-                    cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name",legal_entity_name.Text);
-                    cmd.Parameters.AddWithValue("@Party_Name",party_name.Text);
-                    cmd.Parameters.AddWithValue("@Principle_Name",principal_name.Text);
-                    cmd.Parameters.AddWithValue("@Client_Country",client_country.Text);
-                    cmd.Parameters.AddWithValue("@Client_Risk_Category",client_risk_category.Text);
-                    cmd.Parameters.AddWithValue("@Global_Sanctions",global_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions",type_of_global_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Regional_Sanctions",regional_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Regional_Sanction_Type",regional_sanctions_type.Text);
-                    cmd.Parameters.AddWithValue("@Segment_Name",segment.Text);
-                    cmd.Parameters.AddWithValue("@Sanctions_Identified_Date",sanctions_identified_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Sanctions_Notified_Date",sanctions_notified_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Request_Completion_Date",completion_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Requestor_Email_Address",requestor_email_address.Text);
-                    cmd.Parameters.AddWithValue("@LOB",lob.Text);
-                    cmd.Parameters.AddWithValue("@Requestor_Location",requestor_location.Text);
-                    cmd.Parameters.AddWithValue("@Region",region.Text);
-                    cmd.Parameters.AddWithValue("@Sanctions_Status",sanctions_status.Text);
-                    cmd.Parameters.AddWithValue("@Comments",comments.Text);
-                    cmd.Parameters.AddWithValue("@LastUpdatedBy",Environment.UserName.ToString());
+                    cmd.Parameters.AddWithValue("@Process", process.Text);
+                    cmd.Parameters.AddWithValue("@Month", month.Value.Date);
+                    cmd.Parameters.AddWithValue("@RequestID_BatchID", requestid_batchid.Text);
+                    cmd.Parameters.AddWithValue("@GCID_TrackingID", gcid_trackingid.Text);
+                    cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", legal_entity_name.Text);
+                    cmd.Parameters.AddWithValue("@Party_Name", party_name.Text);
+                    cmd.Parameters.AddWithValue("@Principle_Name", principal_name.Text);
+                    cmd.Parameters.AddWithValue("@Client_Country", client_country.Text);
+                    cmd.Parameters.AddWithValue("@Client_Risk_Category", client_risk_category.Text);
+                    cmd.Parameters.AddWithValue("@Global_Sanctions", global_sanctions.Text);
+                    cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", type_of_global_sanctions.Text);
+                    cmd.Parameters.AddWithValue("@Regional_Sanctions", regional_sanctions.Text);
+                    cmd.Parameters.AddWithValue("@Regional_Sanction_Type", regional_sanctions_type.Text);
+                    cmd.Parameters.AddWithValue("@Segment_Name", segment.Text);
+                    cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", sanctions_identified_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", sanctions_notified_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@Request_Completion_Date", completion_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@Requestor_Email_Address", requestor_email_address.Text);
+                    cmd.Parameters.AddWithValue("@LOB", lob.Text);
+                    cmd.Parameters.AddWithValue("@Requestor_Location", requestor_location.Text);
+                    cmd.Parameters.AddWithValue("@Region", region.Text);
+                    cmd.Parameters.AddWithValue("@Sanctions_Status", sanctions_status.Text);
+                    cmd.Parameters.AddWithValue("@Comments", comments.Text);
+                    cmd.Parameters.AddWithValue("@LastUpdatedBy", Environment.UserName.ToString());
+                    if (string.IsNullOrEmpty(relationship_type.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Relationship_Type", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Relationship_Type", relationship_type.Text);
+                    }
+                    if (string.IsNullOrEmpty(qc_status.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@QC_Status", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@QC_Status", qc_status);
+                    }
+                    if (string.IsNullOrEmpty(sanctions_risk_status.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Risk_Status", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Risk_Status", sanctions_risk_status.Text);
+                    }
+
 
                     if (string.IsNullOrEmpty(process.Text))
                     {
@@ -401,75 +464,75 @@ namespace Workflow
                     {
                         MessageBox.Show("Please update GCID_TrackingID");
                     }
-                    else if(string.IsNullOrEmpty(legal_entity_name.Text))
+                    else if (string.IsNullOrEmpty(legal_entity_name.Text))
                     {
                         MessageBox.Show("Please update Legal Entity Name");
                     }
-                    else if(string.IsNullOrEmpty(party_name.Text))
+                    else if (string.IsNullOrEmpty(party_name.Text))
                     {
                         MessageBox.Show("Please update Party Name");
                     }
-                    else if(string.IsNullOrEmpty(principal_name.Text))
+                    else if (string.IsNullOrEmpty(principal_name.Text))
                     {
                         MessageBox.Show("Please update Principal Name");
                     }
-                    else if(string.IsNullOrEmpty(client_country.Text))
+                    else if (string.IsNullOrEmpty(client_country.Text))
                     {
                         MessageBox.Show("Please update Client Country");
                     }
-                    else if(string.IsNullOrEmpty(client_risk_category.Text))
+                    else if (string.IsNullOrEmpty(client_risk_category.Text))
                     {
                         MessageBox.Show("Please update Client Risk Category");
                     }
-                    else if(string.IsNullOrEmpty(global_sanctions.Text))
+                    else if (string.IsNullOrEmpty(global_sanctions.Text))
                     {
                         MessageBox.Show("Please update Global Sanctions");
                     }
-                    else if(string.IsNullOrEmpty(type_of_global_sanctions.Text))
+                    else if (string.IsNullOrEmpty(type_of_global_sanctions.Text))
                     {
                         MessageBox.Show("Please update Type of Global Sanctions");
                     }
-                    else if(string.IsNullOrEmpty(regional_sanctions.Text))
+                    else if (string.IsNullOrEmpty(regional_sanctions.Text))
                     {
                         MessageBox.Show("Please update Regional Sanctions");
                     }
-                    else if(string.IsNullOrEmpty(regional_sanctions_type.Text))
+                    else if (string.IsNullOrEmpty(regional_sanctions_type.Text))
                     {
                         MessageBox.Show("Please update Regional Sanctions Type");
                     }
-                    else if(sanctions_identified_date.Text.Trim() == string.Empty)
+                    else if (sanctions_identified_date.Text.Trim() == string.Empty)
                     {
                         MessageBox.Show("Please update Sanctions Identified Date");
                     }
-                    else if(sanctions_notified_date.Text.Trim() == string.Empty)
+                    else if (sanctions_notified_date.Text.Trim() == string.Empty)
                     {
                         MessageBox.Show("Please update Sanctions Notified Date");
                     }
-                    else if(completion_date.Text.Trim() == string.Empty)
+                    else if (completion_date.Text.Trim() == string.Empty)
                     {
                         MessageBox.Show("Please update Completion Date");
                     }
-                    else if(string.IsNullOrEmpty(requestor_email_address.Text))
+                    else if (string.IsNullOrEmpty(requestor_email_address.Text))
                     {
                         MessageBox.Show("Please update Requestor Email Address");
                     }
-                    else if(string.IsNullOrEmpty(segment.Text))
+                    else if (string.IsNullOrEmpty(segment.Text))
                     {
                         MessageBox.Show("Please update Segment Name");
                     }
-                    else if(string.IsNullOrEmpty(lob.Text))
+                    else if (string.IsNullOrEmpty(lob.Text))
                     {
                         MessageBox.Show("Please update LOB name");
                     }
-                    else if(string.IsNullOrEmpty(region.Text))
+                    else if (string.IsNullOrEmpty(region.Text))
                     {
                         MessageBox.Show("Please update Region");
                     }
-                    else if(string.IsNullOrEmpty(requestor_location.Text))
+                    else if (string.IsNullOrEmpty(requestor_location.Text))
                     {
                         MessageBox.Show("Please update Requestor Location");
                     }
-                    else if(string.IsNullOrEmpty(sanctions_status.Text))
+                    else if (string.IsNullOrEmpty(sanctions_status.Text))
                     {
                         MessageBox.Show("Please update Sanctions Status");
                     }
@@ -506,9 +569,13 @@ namespace Workflow
 
         private void requestid_batchid_TextChanged(object sender, EventArgs e)
         {
-            if(process.Text == "KYC")
+            if (process.Text == "KYC")
             {
                 request_details_kyc();
+            }
+            if (process.Text == "OMS")
+            {
+                request_details_oms();
             }
         }
 
@@ -520,6 +587,246 @@ namespace Workflow
         private void searchby_requestid_batchid_TextChanged(object sender, EventArgs e)
         {
             datagridview_display_overall();
+        }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            string messsage = "Do you want to insert this record?";
+            string title = "Message Box";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(messsage, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+
+                try
+                {
+                    cmd.Parameters.Clear();
+                    conn.ConnectionString = connectionstringtxt;
+                    cmd.Connection = conn;
+                    //cmd.CommandText = "insert into tbl_approvals_daily_dotnet(processtype,drdprocess,approvalteam,receiveddate,receivedtime,completiondate,completiontime,noofemails,associatename,requestorbusinessunit,partyname,principalname,category,noofrecords,qualityparameters,TypeofBreaches,FeedbackGiven,TypeofError,NoofCriticalErrors,NoofMinorErrors,Comments,CorrectiveActionTaken,CorrectiveActionDate,CorrectiveActionTime,CorrectiveActionComments,ReasonsforDisagreement,lastupdatedatetime,isdeleted,machinename,principletype,riskid,BatchID,PartyLocation,RiskCategory,EventCodes) values (@processtypeparam,@drdprocessparam,@approvalteamnameparam,@receiveddateparam,@receivedtimeparam,@completiondateparam,@completiontimeparam,@noofemailsparam,@associatenameparam,@requestorbusinessunitparam,@partynameparam,@principalnameparam,@categorynameparam,@noofrecordsparam,@qualityparametersparam,@typeofbreachesparam,@feedbackgivenparam,@typeoferrorparam,@noofcriticalerrorsparam,@noofminorerrorsparam,@commentsparam,@correctiveactiontakenparam,@correctiveactiondateparam,@correctiveactiontimeparam,@correctiveactioncommentsparam,@reasonsfordisagreementparam,@lastupdatedatetimeparam,@isdeletedparam,@machinenameparam,@principletypeparam,@riskidparam,@BatchIDparam,@PartyLocationparam,@RiskCategory,@EventCodes)";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "dbo.usp_sanctions_qc_update_dotnet";
+                    cmd.Parameters.Add("@Message", SqlDbType.NVarChar, 1000);
+                    cmd.Parameters["@Message"].Direction = ParameterDirection.Output;
+
+                    cmd.Parameters.AddWithValue("@Process", process.Text);
+                    cmd.Parameters.AddWithValue("@ID", id.Text);
+                    cmd.Parameters.AddWithValue("@Month", month.Value.Date);
+                    cmd.Parameters.AddWithValue("@RequestID_BatchID", requestid_batchid.Text);
+                    cmd.Parameters.AddWithValue("@GCID_TrackingID", gcid_trackingid.Text);
+                    cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", legal_entity_name.Text);
+                    cmd.Parameters.AddWithValue("@Party_Name", party_name.Text);
+                    cmd.Parameters.AddWithValue("@Principle_Name", principal_name.Text);
+                    cmd.Parameters.AddWithValue("@Client_Country", client_country.Text);
+                    cmd.Parameters.AddWithValue("@Client_Risk_Category", client_risk_category.Text);
+                    cmd.Parameters.AddWithValue("@Global_Sanctions", global_sanctions.Text);
+                    cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", type_of_global_sanctions.Text);
+                    cmd.Parameters.AddWithValue("@Regional_Sanctions", regional_sanctions.Text);
+                    cmd.Parameters.AddWithValue("@Regional_Sanction_Type", regional_sanctions_type.Text);
+                    cmd.Parameters.AddWithValue("@Segment_Name", segment.Text);
+                    cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", sanctions_identified_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", sanctions_notified_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@Request_Completion_Date", completion_date.Value.Date);
+                    cmd.Parameters.AddWithValue("@Requestor_Email_Address", requestor_email_address.Text);
+                    cmd.Parameters.AddWithValue("@LOB", lob.Text);
+                    cmd.Parameters.AddWithValue("@Requestor_Location", requestor_location.Text);
+                    cmd.Parameters.AddWithValue("@Region", region.Text);
+                    cmd.Parameters.AddWithValue("@Sanctions_Status", sanctions_status.Text);
+                    cmd.Parameters.AddWithValue("@Comments", comments.Text);
+                    cmd.Parameters.AddWithValue("@LastUpdatedBy", Environment.UserName.ToString());
+                    if (string.IsNullOrEmpty(relationship_type.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Relationship_Type", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Relationship_Type", relationship_type.Text);
+                    }
+                    if (string.IsNullOrEmpty(qc_status.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@QC_Status", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@QC_Status", qc_status);
+                    }
+                    if (string.IsNullOrEmpty(sanctions_risk_status.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Risk_Status", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Risk_Status", sanctions_risk_status.Text);
+                    }
+
+                    if (string.IsNullOrEmpty(process.Text))
+                    {
+                        MessageBox.Show("Please update Process");
+                    }
+                    else if (month.Text.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Please update Month");
+                    }
+                    else if (string.IsNullOrEmpty(requestid_batchid.Text))
+                    {
+                        MessageBox.Show("Please update RequestID_BatchID");
+                    }
+                    else if (string.IsNullOrEmpty(gcid_trackingid.Text))
+                    {
+                        MessageBox.Show("Please update GCID_TrackingID");
+                    }
+                    else if (string.IsNullOrEmpty(legal_entity_name.Text))
+                    {
+                        MessageBox.Show("Please update Legal Entity Name");
+                    }
+                    else if (string.IsNullOrEmpty(party_name.Text))
+                    {
+                        MessageBox.Show("Please update Party Name");
+                    }
+                    else if (string.IsNullOrEmpty(principal_name.Text))
+                    {
+                        MessageBox.Show("Please update Principal Name");
+                    }
+                    else if (string.IsNullOrEmpty(client_country.Text))
+                    {
+                        MessageBox.Show("Please update Client Country");
+                    }
+                    else if (string.IsNullOrEmpty(client_risk_category.Text))
+                    {
+                        MessageBox.Show("Please update Client Risk Category");
+                    }
+                    else if (string.IsNullOrEmpty(global_sanctions.Text))
+                    {
+                        MessageBox.Show("Please update Global Sanctions");
+                    }
+                    else if (string.IsNullOrEmpty(type_of_global_sanctions.Text))
+                    {
+                        MessageBox.Show("Please update Type of Global Sanctions");
+                    }
+                    else if (string.IsNullOrEmpty(regional_sanctions.Text))
+                    {
+                        MessageBox.Show("Please update Regional Sanctions");
+                    }
+                    else if (string.IsNullOrEmpty(regional_sanctions_type.Text))
+                    {
+                        MessageBox.Show("Please update Regional Sanctions Type");
+                    }
+                    else if (sanctions_identified_date.Text.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Please update Sanctions Identified Date");
+                    }
+                    else if (sanctions_notified_date.Text.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Please update Sanctions Notified Date");
+                    }
+                    else if (completion_date.Text.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Please update Completion Date");
+                    }
+                    else if (string.IsNullOrEmpty(requestor_email_address.Text))
+                    {
+                        MessageBox.Show("Please update Requestor Email Address");
+                    }
+                    else if (string.IsNullOrEmpty(segment.Text))
+                    {
+                        MessageBox.Show("Please update Segment Name");
+                    }
+                    else if (string.IsNullOrEmpty(lob.Text))
+                    {
+                        MessageBox.Show("Please update LOB name");
+                    }
+                    else if (string.IsNullOrEmpty(region.Text))
+                    {
+                        MessageBox.Show("Please update Region");
+                    }
+                    else if (string.IsNullOrEmpty(requestor_location.Text))
+                    {
+                        MessageBox.Show("Please update Requestor Location");
+                    }
+                    else if (string.IsNullOrEmpty(sanctions_status.Text))
+                    {
+                        MessageBox.Show("Please update Sanctions Status");
+                    }
+                    else
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        string uploadmessage = cmd.Parameters["@Message"].Value.ToString();
+                        MessageBox.Show("" + uploadmessage.ToString());
+                        cmd.Parameters.Clear();
+                        reset_overall();
+                        conn.Close();
+                    }
+
+                }
+                catch (Exception ab)
+                {
+                    MessageBox.Show("Error Generated Details" + ab.ToString());
+                }
+            }
+            else
+            {
+                id.Focus();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string messsage = "Do you want to update the record?";
+            string title = "Message Box";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(messsage, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    insert.Enabled = false;
+                    update.Enabled = true;
+                    DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                    id.Text = row.Cells["txt_ID"].Value.ToString();
+                    process.Text = row.Cells["txt_Process"].Value.ToString();
+                    month.Text = row.Cells["txt_Month"].Value.ToString();
+                    month.CustomFormat = "MMMM-yyyy";
+                    requestid_batchid.Text = row.Cells["txt_RequestID_BatchID"].Value.ToString();
+                    gcid_trackingid.Text = row.Cells["txt_GCID_TrackingID"].Value.ToString();
+                    legal_entity_name.Text = row.Cells["txt_WTW_Legal_Entity_Name"].Value.ToString();
+                    party_name.Text = row.Cells["txt_Party_Name"].Value.ToString();
+                    principal_name.Text = row.Cells["txt_Principle_Name"].Value.ToString();
+                    client_country.Text = row.Cells["txt_Client_Country"].Value.ToString();
+                    client_risk_category.Text = row.Cells["txt_Client_Risk_Category"].Value.ToString();
+                    global_sanctions.Text = row.Cells["txt_Global_Sanctions"].Value.ToString();
+                    type_of_global_sanctions.Text = row.Cells["txt_Type_Of_Global_Sanctions"].Value.ToString();
+                    regional_sanctions.Text = row.Cells["txt_Regional_Sanctions"].Value.ToString();
+                    regional_sanctions_type.Text = row.Cells["txt_Regional_Sanction_Type"].Value.ToString();
+                    sanctions_identified_date.Text = row.Cells["txt_Sanctions_Identified_Date"].Value.ToString();
+                    sanctions_identified_date.CustomFormat = "dd-MMMM-yyyy";
+                    sanctions_notified_date.Text = row.Cells["txt_Sanctions_Notified_Date"].Value.ToString();
+                    sanctions_notified_date.CustomFormat = "dd-MMMM-yyyy";
+                    completion_date.Text = row.Cells["txt_Request_Completion_Date"].Value.ToString();
+                    completion_date.CustomFormat = "dd-MMMM-yyyy";
+                    requestor_email_address.Text = row.Cells["txt_Requestor_Email_Address"].Value.ToString();
+                    segment.Text = row.Cells["txt_Segment_Name"].Value.ToString();
+                    lob.Text = row.Cells["txt_LOB"].Value.ToString();
+                    region.Text = row.Cells["txt_Region"].Value.ToString();
+                    requestor_location.Text = row.Cells["txt_Requestor_Location"].Value.ToString();
+                    sanctions_status.Text = row.Cells["txt_Sanctions_Status"].Value.ToString();
+                    relationship_type.Text = row.Cells["txt_Relationship_Type"].Value.ToString();
+                    qc_status.Text = row.Cells["txt_QC_Status"].Value.ToString();
+                    sanctions_risk_status.Text = row.Cells["txt_Sanctions_Risk_Status"].Value.ToString();
+                    comments.Text = row.Cells["txt_Comments"].Value.ToString();
+                }
+            }
+            else
+            {
+                id.Focus();
+                insert.Enabled = true;
+                update.Enabled = false;
+            }
+
         }
     }
 }

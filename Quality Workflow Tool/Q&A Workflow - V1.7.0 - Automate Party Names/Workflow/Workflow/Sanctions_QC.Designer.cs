@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.reset = new System.Windows.Forms.Button();
+            this.update = new System.Windows.Forms.Button();
             this.sanctions_status = new System.Windows.Forms.ComboBox();
             this.insert = new System.Windows.Forms.Button();
             this.comments = new System.Windows.Forms.TextBox();
@@ -81,17 +83,60 @@
             this.party_name_lookup = new System.Windows.Forms.ComboBox();
             this.client_country_lookup = new System.Windows.Forms.ComboBox();
             this.legal_entity_name_lookup = new System.Windows.Forms.ComboBox();
-            this.update = new System.Windows.Forms.Button();
-            this.reset = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.searchby_requestid_batchid = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.relationship_type = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.qc_status = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.sanctions_risk_status = new System.Windows.Forms.ComboBox();
+            this.txt_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Process = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Month = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_RequestID_BatchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_GCID_TrackingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_WTW_Legal_Entity_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Party_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Principle_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Client_Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Client_Risk_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Global_Sanctions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Type_Of_Global_Sanctions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Regional_Sanctions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Regional_Sanction_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Segment_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Sanctions_Identified_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Sanctions_Notified_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Request_Completion_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Requestor_Email_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_LOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Requestor_Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Region = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Sanctions_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Relationship_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_QC_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Sanctions_Risk_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Chaser1_Due_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Chaser2_Due_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Chaser1_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Chaser2_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_LastUpdatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_LastUpdatedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.sanctions_risk_status);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.qc_status);
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.Controls.Add(this.relationship_type);
+            this.groupBox1.Controls.Add(this.label26);
             this.groupBox1.Controls.Add(this.reset);
             this.groupBox1.Controls.Add(this.update);
             this.groupBox1.Controls.Add(this.sanctions_status);
@@ -149,6 +194,26 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // reset
+            // 
+            this.reset.Location = new System.Drawing.Point(1060, 412);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(120, 55);
+            this.reset.TabIndex = 51;
+            this.reset.Text = "Reset";
+            this.reset.UseVisualStyleBackColor = true;
+            this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
+            // update
+            // 
+            this.update.Location = new System.Drawing.Point(913, 412);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(120, 55);
+            this.update.TabIndex = 50;
+            this.update.Text = "Update";
+            this.update.UseVisualStyleBackColor = true;
+            this.update.Click += new System.EventHandler(this.update_Click);
+            // 
             // sanctions_status
             // 
             this.sanctions_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -163,7 +228,7 @@
             // 
             // insert
             // 
-            this.insert.Location = new System.Drawing.Point(87, 415);
+            this.insert.Location = new System.Drawing.Point(770, 412);
             this.insert.Name = "insert";
             this.insert.Size = new System.Drawing.Size(120, 55);
             this.insert.TabIndex = 48;
@@ -173,7 +238,7 @@
             // 
             // comments
             // 
-            this.comments.Location = new System.Drawing.Point(859, 334);
+            this.comments.Location = new System.Drawing.Point(114, 412);
             this.comments.Multiline = true;
             this.comments.Name = "comments";
             this.comments.Size = new System.Drawing.Size(591, 68);
@@ -182,7 +247,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(757, 338);
+            this.label24.Location = new System.Drawing.Point(7, 415);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(86, 20);
             this.label24.TabIndex = 46;
@@ -227,7 +292,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(11, 334);
+            this.label21.Location = new System.Drawing.Point(7, 334);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(84, 40);
             this.label21.TabIndex = 40;
@@ -628,41 +693,57 @@
             this.legal_entity_name_lookup.Size = new System.Drawing.Size(121, 28);
             this.legal_entity_name_lookup.TabIndex = 3;
             // 
-            // update
-            // 
-            this.update.Location = new System.Drawing.Point(230, 415);
-            this.update.Name = "update";
-            this.update.Size = new System.Drawing.Size(120, 55);
-            this.update.TabIndex = 50;
-            this.update.Text = "Update";
-            this.update.UseVisualStyleBackColor = true;
-            // 
-            // reset
-            // 
-            this.reset.Location = new System.Drawing.Point(377, 415);
-            this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(120, 55);
-            this.reset.TabIndex = 51;
-            this.reset.Text = "Reset";
-            this.reset.UseVisualStyleBackColor = true;
-            this.reset.Click += new System.EventHandler(this.reset_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.txt_ID,
+            this.txt_Process,
+            this.txt_Month,
+            this.txt_RequestID_BatchID,
+            this.txt_GCID_TrackingID,
+            this.txt_WTW_Legal_Entity_Name,
+            this.txt_Party_Name,
+            this.txt_Principle_Name,
+            this.txt_Client_Country,
+            this.txt_Client_Risk_Category,
+            this.txt_Global_Sanctions,
+            this.txt_Type_Of_Global_Sanctions,
+            this.txt_Regional_Sanctions,
+            this.txt_Regional_Sanction_Type,
+            this.txt_Segment_Name,
+            this.txt_Sanctions_Identified_Date,
+            this.txt_Sanctions_Notified_Date,
+            this.txt_Request_Completion_Date,
+            this.txt_Requestor_Email_Address,
+            this.txt_LOB,
+            this.txt_Requestor_Location,
+            this.txt_Region,
+            this.txt_Sanctions_Status,
+            this.txt_Comments,
+            this.txt_Relationship_Type,
+            this.txt_QC_Status,
+            this.txt_Sanctions_Risk_Status,
+            this.txt_Chaser1_Due_Date,
+            this.txt_Chaser2_Due_Date,
+            this.txt_Chaser1_Status,
+            this.txt_Chaser2_Status,
+            this.txt_LastUpdatedDateTime,
+            this.txt_LastUpdatedBy});
             this.dataGridView1.Location = new System.Drawing.Point(13, 667);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1284, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(1866, 357);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // searchby_requestid_batchid
             // 
-            this.searchby_requestid_batchid.Location = new System.Drawing.Point(157, 596);
+            this.searchby_requestid_batchid.Location = new System.Drawing.Point(100, 592);
             this.searchby_requestid_batchid.Name = "searchby_requestid_batchid";
             this.searchby_requestid_batchid.Size = new System.Drawing.Size(300, 26);
             this.searchby_requestid_batchid.TabIndex = 5;
@@ -671,11 +752,374 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(185, 631);
+            this.label25.Location = new System.Drawing.Point(133, 631);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(230, 20);
             this.label25.TabIndex = 6;
             this.label25.Text = "Search by RequestID_BatchID";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(766, 334);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(97, 40);
+            this.label26.TabIndex = 52;
+            this.label26.Text = "Relationship\r\nType";
+            // 
+            // relationship_type
+            // 
+            this.relationship_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.relationship_type.FormattingEnabled = true;
+            this.relationship_type.Items.AddRange(new object[] {
+            "Global Ultimate Owner",
+            "Legal Representative",
+            "Principals",
+            "Shareholders",
+            "Ultimate Beneficiary Owner (UBO)"});
+            this.relationship_type.Location = new System.Drawing.Point(886, 334);
+            this.relationship_type.Name = "relationship_type";
+            this.relationship_type.Size = new System.Drawing.Size(247, 28);
+            this.relationship_type.TabIndex = 53;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(1139, 334);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(83, 20);
+            this.label27.TabIndex = 54;
+            this.label27.Text = "QC Status";
+            // 
+            // qc_status
+            // 
+            this.qc_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.qc_status.FormattingEnabled = true;
+            this.qc_status.Items.AddRange(new object[] {
+            "Pass",
+            "Fail"});
+            this.qc_status.Location = new System.Drawing.Point(1234, 334);
+            this.qc_status.Name = "qc_status";
+            this.qc_status.Size = new System.Drawing.Size(158, 28);
+            this.qc_status.TabIndex = 55;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(1409, 334);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(91, 40);
+            this.label28.TabIndex = 56;
+            this.label28.Text = "Sanctions \r\nRisk Status";
+            // 
+            // sanctions_risk_status
+            // 
+            this.sanctions_risk_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sanctions_risk_status.FormattingEnabled = true;
+            this.sanctions_risk_status.Items.AddRange(new object[] {
+            "Accepted",
+            "Rejected"});
+            this.sanctions_risk_status.Location = new System.Drawing.Point(1506, 334);
+            this.sanctions_risk_status.Name = "sanctions_risk_status";
+            this.sanctions_risk_status.Size = new System.Drawing.Size(191, 28);
+            this.sanctions_risk_status.TabIndex = 57;
+            // 
+            // txt_ID
+            // 
+            this.txt_ID.DataPropertyName = "ID";
+            this.txt_ID.HeaderText = "ID";
+            this.txt_ID.MinimumWidth = 8;
+            this.txt_ID.Name = "txt_ID";
+            this.txt_ID.ReadOnly = true;
+            this.txt_ID.Width = 150;
+            // 
+            // txt_Process
+            // 
+            this.txt_Process.DataPropertyName = "Process";
+            this.txt_Process.HeaderText = "Process";
+            this.txt_Process.MinimumWidth = 8;
+            this.txt_Process.Name = "txt_Process";
+            this.txt_Process.ReadOnly = true;
+            this.txt_Process.Width = 150;
+            // 
+            // txt_Month
+            // 
+            this.txt_Month.DataPropertyName = "Month";
+            this.txt_Month.HeaderText = "Month";
+            this.txt_Month.MinimumWidth = 8;
+            this.txt_Month.Name = "txt_Month";
+            this.txt_Month.ReadOnly = true;
+            this.txt_Month.Width = 150;
+            // 
+            // txt_RequestID_BatchID
+            // 
+            this.txt_RequestID_BatchID.DataPropertyName = "RequestID_BatchID";
+            this.txt_RequestID_BatchID.HeaderText = "RequestID_BatchID";
+            this.txt_RequestID_BatchID.MinimumWidth = 8;
+            this.txt_RequestID_BatchID.Name = "txt_RequestID_BatchID";
+            this.txt_RequestID_BatchID.ReadOnly = true;
+            this.txt_RequestID_BatchID.Width = 150;
+            // 
+            // txt_GCID_TrackingID
+            // 
+            this.txt_GCID_TrackingID.DataPropertyName = "GCID_TrackingID";
+            this.txt_GCID_TrackingID.HeaderText = "GCID_TrackingID";
+            this.txt_GCID_TrackingID.MinimumWidth = 8;
+            this.txt_GCID_TrackingID.Name = "txt_GCID_TrackingID";
+            this.txt_GCID_TrackingID.ReadOnly = true;
+            this.txt_GCID_TrackingID.Width = 150;
+            // 
+            // txt_WTW_Legal_Entity_Name
+            // 
+            this.txt_WTW_Legal_Entity_Name.DataPropertyName = "WTW_Legal_Entity_Name";
+            this.txt_WTW_Legal_Entity_Name.HeaderText = "WTW_Legal_Entity_Name";
+            this.txt_WTW_Legal_Entity_Name.MinimumWidth = 8;
+            this.txt_WTW_Legal_Entity_Name.Name = "txt_WTW_Legal_Entity_Name";
+            this.txt_WTW_Legal_Entity_Name.ReadOnly = true;
+            this.txt_WTW_Legal_Entity_Name.Width = 150;
+            // 
+            // txt_Party_Name
+            // 
+            this.txt_Party_Name.DataPropertyName = "Party_Name";
+            this.txt_Party_Name.HeaderText = "Party_Name";
+            this.txt_Party_Name.MinimumWidth = 8;
+            this.txt_Party_Name.Name = "txt_Party_Name";
+            this.txt_Party_Name.ReadOnly = true;
+            this.txt_Party_Name.Width = 150;
+            // 
+            // txt_Principle_Name
+            // 
+            this.txt_Principle_Name.DataPropertyName = "Principle_Name";
+            this.txt_Principle_Name.HeaderText = "Principle_Name";
+            this.txt_Principle_Name.MinimumWidth = 8;
+            this.txt_Principle_Name.Name = "txt_Principle_Name";
+            this.txt_Principle_Name.ReadOnly = true;
+            this.txt_Principle_Name.Width = 150;
+            // 
+            // txt_Client_Country
+            // 
+            this.txt_Client_Country.DataPropertyName = "Client_Country";
+            this.txt_Client_Country.HeaderText = "Client_Country";
+            this.txt_Client_Country.MinimumWidth = 8;
+            this.txt_Client_Country.Name = "txt_Client_Country";
+            this.txt_Client_Country.ReadOnly = true;
+            this.txt_Client_Country.Width = 150;
+            // 
+            // txt_Client_Risk_Category
+            // 
+            this.txt_Client_Risk_Category.DataPropertyName = "Client_Risk_Category";
+            this.txt_Client_Risk_Category.HeaderText = "Client_Risk_Category";
+            this.txt_Client_Risk_Category.MinimumWidth = 8;
+            this.txt_Client_Risk_Category.Name = "txt_Client_Risk_Category";
+            this.txt_Client_Risk_Category.ReadOnly = true;
+            this.txt_Client_Risk_Category.Width = 150;
+            // 
+            // txt_Global_Sanctions
+            // 
+            this.txt_Global_Sanctions.DataPropertyName = "Global_Sanctions";
+            this.txt_Global_Sanctions.HeaderText = "Global_Sanctions";
+            this.txt_Global_Sanctions.MinimumWidth = 8;
+            this.txt_Global_Sanctions.Name = "txt_Global_Sanctions";
+            this.txt_Global_Sanctions.ReadOnly = true;
+            this.txt_Global_Sanctions.Width = 150;
+            // 
+            // txt_Type_Of_Global_Sanctions
+            // 
+            this.txt_Type_Of_Global_Sanctions.DataPropertyName = "Type_Of_Global_Sanctions";
+            this.txt_Type_Of_Global_Sanctions.HeaderText = "Type_Of_Global_Sanctions";
+            this.txt_Type_Of_Global_Sanctions.MinimumWidth = 8;
+            this.txt_Type_Of_Global_Sanctions.Name = "txt_Type_Of_Global_Sanctions";
+            this.txt_Type_Of_Global_Sanctions.ReadOnly = true;
+            this.txt_Type_Of_Global_Sanctions.Width = 150;
+            // 
+            // txt_Regional_Sanctions
+            // 
+            this.txt_Regional_Sanctions.DataPropertyName = "Regional_Sanctions";
+            this.txt_Regional_Sanctions.HeaderText = "Regional_Sanctions";
+            this.txt_Regional_Sanctions.MinimumWidth = 8;
+            this.txt_Regional_Sanctions.Name = "txt_Regional_Sanctions";
+            this.txt_Regional_Sanctions.ReadOnly = true;
+            this.txt_Regional_Sanctions.Width = 150;
+            // 
+            // txt_Regional_Sanction_Type
+            // 
+            this.txt_Regional_Sanction_Type.DataPropertyName = "Regional_Sanction_Type";
+            this.txt_Regional_Sanction_Type.HeaderText = "Regional_Sanction_Type";
+            this.txt_Regional_Sanction_Type.MinimumWidth = 8;
+            this.txt_Regional_Sanction_Type.Name = "txt_Regional_Sanction_Type";
+            this.txt_Regional_Sanction_Type.ReadOnly = true;
+            this.txt_Regional_Sanction_Type.Width = 150;
+            // 
+            // txt_Segment_Name
+            // 
+            this.txt_Segment_Name.DataPropertyName = "Segment_Name";
+            this.txt_Segment_Name.HeaderText = "Segment_Name";
+            this.txt_Segment_Name.MinimumWidth = 8;
+            this.txt_Segment_Name.Name = "txt_Segment_Name";
+            this.txt_Segment_Name.ReadOnly = true;
+            this.txt_Segment_Name.Width = 150;
+            // 
+            // txt_Sanctions_Identified_Date
+            // 
+            this.txt_Sanctions_Identified_Date.DataPropertyName = "Sanctions_Identified_Date";
+            this.txt_Sanctions_Identified_Date.HeaderText = "Sanctions_Identified_Date";
+            this.txt_Sanctions_Identified_Date.MinimumWidth = 8;
+            this.txt_Sanctions_Identified_Date.Name = "txt_Sanctions_Identified_Date";
+            this.txt_Sanctions_Identified_Date.ReadOnly = true;
+            this.txt_Sanctions_Identified_Date.Width = 150;
+            // 
+            // txt_Sanctions_Notified_Date
+            // 
+            this.txt_Sanctions_Notified_Date.DataPropertyName = "Sanctions_Notified_Date";
+            this.txt_Sanctions_Notified_Date.HeaderText = "Sanctions_Notified_Date";
+            this.txt_Sanctions_Notified_Date.MinimumWidth = 8;
+            this.txt_Sanctions_Notified_Date.Name = "txt_Sanctions_Notified_Date";
+            this.txt_Sanctions_Notified_Date.ReadOnly = true;
+            this.txt_Sanctions_Notified_Date.Width = 150;
+            // 
+            // txt_Request_Completion_Date
+            // 
+            this.txt_Request_Completion_Date.DataPropertyName = "Request_Completion_Date";
+            this.txt_Request_Completion_Date.HeaderText = "Request_Completion_Date";
+            this.txt_Request_Completion_Date.MinimumWidth = 8;
+            this.txt_Request_Completion_Date.Name = "txt_Request_Completion_Date";
+            this.txt_Request_Completion_Date.ReadOnly = true;
+            this.txt_Request_Completion_Date.Width = 150;
+            // 
+            // txt_Requestor_Email_Address
+            // 
+            this.txt_Requestor_Email_Address.DataPropertyName = "Requestor_Email_Address";
+            this.txt_Requestor_Email_Address.HeaderText = "Requestor_Email_Address";
+            this.txt_Requestor_Email_Address.MinimumWidth = 8;
+            this.txt_Requestor_Email_Address.Name = "txt_Requestor_Email_Address";
+            this.txt_Requestor_Email_Address.ReadOnly = true;
+            this.txt_Requestor_Email_Address.Width = 150;
+            // 
+            // txt_LOB
+            // 
+            this.txt_LOB.DataPropertyName = "LOB";
+            this.txt_LOB.HeaderText = "LOB";
+            this.txt_LOB.MinimumWidth = 8;
+            this.txt_LOB.Name = "txt_LOB";
+            this.txt_LOB.ReadOnly = true;
+            this.txt_LOB.Width = 150;
+            // 
+            // txt_Requestor_Location
+            // 
+            this.txt_Requestor_Location.DataPropertyName = "Requestor_Location";
+            this.txt_Requestor_Location.HeaderText = "Requestor_Location";
+            this.txt_Requestor_Location.MinimumWidth = 8;
+            this.txt_Requestor_Location.Name = "txt_Requestor_Location";
+            this.txt_Requestor_Location.ReadOnly = true;
+            this.txt_Requestor_Location.Width = 150;
+            // 
+            // txt_Region
+            // 
+            this.txt_Region.DataPropertyName = "Region";
+            this.txt_Region.HeaderText = "Region";
+            this.txt_Region.MinimumWidth = 8;
+            this.txt_Region.Name = "txt_Region";
+            this.txt_Region.ReadOnly = true;
+            this.txt_Region.Width = 150;
+            // 
+            // txt_Sanctions_Status
+            // 
+            this.txt_Sanctions_Status.DataPropertyName = "Sanctions_Status";
+            this.txt_Sanctions_Status.HeaderText = "Sanctions_Status";
+            this.txt_Sanctions_Status.MinimumWidth = 8;
+            this.txt_Sanctions_Status.Name = "txt_Sanctions_Status";
+            this.txt_Sanctions_Status.ReadOnly = true;
+            this.txt_Sanctions_Status.Width = 150;
+            // 
+            // txt_Comments
+            // 
+            this.txt_Comments.DataPropertyName = "Comments";
+            this.txt_Comments.HeaderText = "Comments";
+            this.txt_Comments.MinimumWidth = 8;
+            this.txt_Comments.Name = "txt_Comments";
+            this.txt_Comments.ReadOnly = true;
+            this.txt_Comments.Width = 150;
+            // 
+            // txt_Relationship_Type
+            // 
+            this.txt_Relationship_Type.DataPropertyName = "Relationship_Type";
+            this.txt_Relationship_Type.HeaderText = "Relationship_Type";
+            this.txt_Relationship_Type.MinimumWidth = 8;
+            this.txt_Relationship_Type.Name = "txt_Relationship_Type";
+            this.txt_Relationship_Type.ReadOnly = true;
+            this.txt_Relationship_Type.Width = 150;
+            // 
+            // txt_QC_Status
+            // 
+            this.txt_QC_Status.DataPropertyName = "QC_Status";
+            this.txt_QC_Status.HeaderText = "QC_Status";
+            this.txt_QC_Status.MinimumWidth = 8;
+            this.txt_QC_Status.Name = "txt_QC_Status";
+            this.txt_QC_Status.ReadOnly = true;
+            this.txt_QC_Status.Width = 150;
+            // 
+            // txt_Sanctions_Risk_Status
+            // 
+            this.txt_Sanctions_Risk_Status.DataPropertyName = "Sanctions_Risk_Status";
+            this.txt_Sanctions_Risk_Status.HeaderText = "Sanctions_Risk_Status";
+            this.txt_Sanctions_Risk_Status.MinimumWidth = 8;
+            this.txt_Sanctions_Risk_Status.Name = "txt_Sanctions_Risk_Status";
+            this.txt_Sanctions_Risk_Status.ReadOnly = true;
+            this.txt_Sanctions_Risk_Status.Width = 150;
+            // 
+            // txt_Chaser1_Due_Date
+            // 
+            this.txt_Chaser1_Due_Date.DataPropertyName = "Chaser1_Due_Date";
+            this.txt_Chaser1_Due_Date.HeaderText = "Chaser1_Due_Date";
+            this.txt_Chaser1_Due_Date.MinimumWidth = 8;
+            this.txt_Chaser1_Due_Date.Name = "txt_Chaser1_Due_Date";
+            this.txt_Chaser1_Due_Date.ReadOnly = true;
+            this.txt_Chaser1_Due_Date.Width = 150;
+            // 
+            // txt_Chaser2_Due_Date
+            // 
+            this.txt_Chaser2_Due_Date.DataPropertyName = "Chaser2_Due_Date";
+            this.txt_Chaser2_Due_Date.HeaderText = "Chaser2_Due_Date";
+            this.txt_Chaser2_Due_Date.MinimumWidth = 8;
+            this.txt_Chaser2_Due_Date.Name = "txt_Chaser2_Due_Date";
+            this.txt_Chaser2_Due_Date.ReadOnly = true;
+            this.txt_Chaser2_Due_Date.Width = 150;
+            // 
+            // txt_Chaser1_Status
+            // 
+            this.txt_Chaser1_Status.DataPropertyName = "Chaser1_Status";
+            this.txt_Chaser1_Status.HeaderText = "Chaser1_Status";
+            this.txt_Chaser1_Status.MinimumWidth = 8;
+            this.txt_Chaser1_Status.Name = "txt_Chaser1_Status";
+            this.txt_Chaser1_Status.ReadOnly = true;
+            this.txt_Chaser1_Status.Width = 150;
+            // 
+            // txt_Chaser2_Status
+            // 
+            this.txt_Chaser2_Status.DataPropertyName = "Chaser2_Status";
+            this.txt_Chaser2_Status.HeaderText = "Chaser2_Status";
+            this.txt_Chaser2_Status.MinimumWidth = 8;
+            this.txt_Chaser2_Status.Name = "txt_Chaser2_Status";
+            this.txt_Chaser2_Status.ReadOnly = true;
+            this.txt_Chaser2_Status.Width = 150;
+            // 
+            // txt_LastUpdatedDateTime
+            // 
+            this.txt_LastUpdatedDateTime.DataPropertyName = "LastUpdatedDateTime";
+            this.txt_LastUpdatedDateTime.HeaderText = "LastUpdatedDateTime";
+            this.txt_LastUpdatedDateTime.MinimumWidth = 8;
+            this.txt_LastUpdatedDateTime.Name = "txt_LastUpdatedDateTime";
+            this.txt_LastUpdatedDateTime.ReadOnly = true;
+            this.txt_LastUpdatedDateTime.Width = 150;
+            // 
+            // txt_LastUpdatedBy
+            // 
+            this.txt_LastUpdatedBy.DataPropertyName = "LastUpdatedBy";
+            this.txt_LastUpdatedBy.HeaderText = "LastUpdatedBy";
+            this.txt_LastUpdatedBy.MinimumWidth = 8;
+            this.txt_LastUpdatedBy.Name = "txt_LastUpdatedBy";
+            this.txt_LastUpdatedBy.ReadOnly = true;
+            this.txt_LastUpdatedBy.Width = 150;
             // 
             // Sanctions_QC
             // 
@@ -762,5 +1206,44 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox searchby_requestid_batchid;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox qc_status;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox relationship_type;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox sanctions_risk_status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Process;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Month;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_RequestID_BatchID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_GCID_TrackingID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_WTW_Legal_Entity_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Party_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Principle_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Client_Country;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Client_Risk_Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Global_Sanctions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Type_Of_Global_Sanctions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Regional_Sanctions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Regional_Sanction_Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Segment_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Sanctions_Identified_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Sanctions_Notified_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Request_Completion_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Requestor_Email_Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_LOB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Requestor_Location;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Region;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Sanctions_Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Comments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Relationship_Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_QC_Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Sanctions_Risk_Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Chaser1_Due_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Chaser2_Due_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Chaser1_Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Chaser2_Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_LastUpdatedDateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_LastUpdatedBy;
     }
 }

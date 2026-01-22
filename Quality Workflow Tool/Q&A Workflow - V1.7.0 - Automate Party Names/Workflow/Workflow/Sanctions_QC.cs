@@ -27,7 +27,7 @@ namespace Workflow
 
         private void Sanctions_QC_Load(object sender, EventArgs e)
         {
-
+            reset_overall();
         }
 
         public void reset_overall()
@@ -66,6 +66,8 @@ namespace Workflow
             relationship_type.SelectedIndex = -1;
             qc_status.SelectedIndex = -1;
             sanctions_risk_status.SelectedIndex = -1;
+            chaser1_sent.CustomFormat = " ";
+            chaser2_sent.CustomFormat = " ";
             insert.Enabled = true;
             update.Enabled = false;
             datagridview_display_overall();
@@ -178,7 +180,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from dbo.vw_Globaldirectory_Upload_New where Requestor_Email_address = @Requestor_Email_address";
+                cmd.CommandText = "select Requestor_Email_Address,LOB,Country,Sub_Region_Derived,SegmentName from dbo.vw_Globaldirectory_Upload_New where Requestor_Email_address = @Requestor_Email_address union select Requestor_Email_Address,LOB,Requestor_Location,Sub_Region_Derived,SegmentName from dbo.tbl_globaldirectory_sanctions_qc with(nolock) where Requestor_Email_address = @Requestor_Email_address ";
                 cmd.Parameters.AddWithValue("@Requestor_Email_address", requestor_email_address.Text);
                 sda.SelectCommand = cmd;
                 sda.Fill(dt);
@@ -294,7 +296,7 @@ namespace Workflow
                 if (string.IsNullOrEmpty(searchby_requestid_batchid.Text))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select top 10 ID,Process,Month,RequestID_BatchID,GCID_TrackingID,WTW_Legal_Entity_Name,Party_Name,Principle_Name,Client_Country,Client_Risk_Category,Global_Sanctions,Type_Of_Global_Sanctions,Regional_Sanctions,Regional_Sanction_Type\r\n,Segment_Name\r\n,Sanctions_Identified_Date,Sanctions_Notified_Date,Request_Completion_Date,Requestor_Email_Address,LOB,Requestor_Location,Region,Sanctions_Status,Comments,Chaser1_Due_Date,Chaser2_Due_Date,Chaser1_Status,Chaser2_Status,LastUpdatedDateTime,LastUpdatedBy,Relationship_Type,QC_Status,Sanctions_Risk_Status from dbo.tbl_sanctions_qc_daily_dotnet with(nolock) where IsDeleted = 0";
+                    cmd.CommandText = "select top 10 ID,Process,Month,RequestID_BatchID,GCID_TrackingID,WTW_Legal_Entity_Name,Party_Name,Principle_Name,Client_Country,Client_Risk_Category,Global_Sanctions,Type_Of_Global_Sanctions,Regional_Sanctions,Regional_Sanction_Type\r\n,Segment_Name\r\n,Sanctions_Identified_Date,Sanctions_Notified_Date,Request_Completion_Date,Requestor_Email_Address,LOB,Requestor_Location,Region,Sanctions_Status,Comments,Chaser1_Due_Date,Chaser2_Due_Date,Chaser1_Status,Chaser2_Status,LastUpdatedDateTime,LastUpdatedBy,Relationship_Type,QC_Status,Sanctions_Risk_Status,Chaser1_Sent,Chaser2_Sent from dbo.tbl_sanctions_qc_daily_dotnet with(nolock) where IsDeleted = 0";
                     cmd.Parameters.AddWithValue("@lastupdatedby", Environment.UserName.ToString());
                 }
                 else
@@ -446,8 +448,24 @@ namespace Workflow
                     {
                         cmd.Parameters.AddWithValue("@Sanctions_Risk_Status", sanctions_risk_status.Text);
                     }
+                    if (chaser1_sent.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser1_Sent", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser1_Sent", chaser1_sent.Value.Date);
+                    }
+                    if (chaser2_sent.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser2_Sent", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser2_Sent", chaser2_sent.Value.Date);
+                    }
 
-
+                    //If conditions
                     if (string.IsNullOrEmpty(process.Text))
                     {
                         MessageBox.Show("Please update Process");
@@ -662,7 +680,24 @@ namespace Workflow
                     {
                         cmd.Parameters.AddWithValue("@Sanctions_Risk_Status", sanctions_risk_status.Text);
                     }
+                    if (chaser1_sent.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser1_Sent", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser1_Sent", chaser1_sent.Value.Date);
+                    }
+                    if (chaser2_sent.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser2_Sent", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Chaser2_Sent", chaser2_sent.Value.Date);
+                    }
 
+                    //If conditions
                     if (string.IsNullOrEmpty(process.Text))
                     {
                         MessageBox.Show("Please update Process");
@@ -814,10 +849,57 @@ namespace Workflow
                     region.Text = row.Cells["txt_Region"].Value.ToString();
                     requestor_location.Text = row.Cells["txt_Requestor_Location"].Value.ToString();
                     sanctions_status.Text = row.Cells["txt_Sanctions_Status"].Value.ToString();
-                    relationship_type.Text = row.Cells["txt_Relationship_Type"].Value.ToString();
-                    qc_status.Text = row.Cells["txt_QC_Status"].Value.ToString();
-                    sanctions_risk_status.Text = row.Cells["txt_Sanctions_Risk_Status"].Value.ToString();
-                    comments.Text = row.Cells["txt_Comments"].Value.ToString();
+                    if (string.IsNullOrEmpty(row.Cells["txt_Relationship_Type"].Value.ToString()))
+                    {
+                        relationship_type.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        relationship_type.Text = row.Cells["txt_Relationship_Type"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_QC_Status"].Value.ToString()))
+                    {
+                        qc_status.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        qc_status.Text = row.Cells["txt_QC_Status"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Sanctions_Risk_Status"].Value.ToString()))
+                    {
+                        sanctions_risk_status.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        sanctions_risk_status.Text = row.Cells["txt_Sanctions_Risk_Status"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Comments"].Value.ToString()))
+                    {
+                        comments.Text = string.Empty;
+                    }
+                    else
+                    {
+                        comments.Text = row.Cells["txt_Comments"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Chaser1_Sent"].Value.ToString()))
+                    {
+                        chaser1_sent.CustomFormat = " ";
+                    }
+                    else
+                    {
+                        chaser1_sent.Text = row.Cells["txt_Chaser1_Sent"].Value.ToString();
+                        chaser1_sent.CustomFormat = "dd-MMMM-yyyy";
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Chaser2_Sent"].Value.ToString()))
+                    {
+                        chaser2_sent.CustomFormat = " ";
+                    }
+                    else
+                    {
+                        chaser2_sent.Text = row.Cells["txt_Chaser2_Sent"].Value.ToString();
+                        chaser2_sent.CustomFormat = "dd-MMMM-yyyy";
+                    }
+                
                 }
             }
             else
@@ -827,6 +909,44 @@ namespace Workflow
                 update.Enabled = false;
             }
 
+        }
+
+        private void requestor_email_address_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chaser1_sent_ValueChanged(object sender, EventArgs e)
+        {
+            chaser1_sent.CustomFormat = "dd-MMMM-yyyy";
+        }
+
+        private void chaser1_sent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                chaser1_sent.CustomFormat = " ";
+            }
+        }
+
+        private void chaser2_sent_ValueChanged(object sender, EventArgs e)
+        {
+            chaser2_sent.CustomFormat = "dd-MMMM-yyyy";
+        }
+
+        private void chaser2_sent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                chaser2_sent.CustomFormat = " ";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2 obj_form2 = new Form2();
+            obj_form2.Show();
         }
     }
 }

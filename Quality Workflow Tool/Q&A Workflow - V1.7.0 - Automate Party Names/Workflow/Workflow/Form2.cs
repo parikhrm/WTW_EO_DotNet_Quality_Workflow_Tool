@@ -40,6 +40,7 @@ namespace Workflow
             workqueue_qualityandapprovals.Visible = false;
             workflow.Visible = false;
             incidentrca.Visible = false;
+            sanctions_qc.Visible = false;
             processmanuals.Visible = false;
             errortracker.Visible = false;
             qualityselfservice.Visible = false;
@@ -98,6 +99,8 @@ namespace Workflow
                 workflow.Enabled = false;
                 incidentrca.Visible = true;
                 incidentrca.Enabled = false;
+                sanctions_qc.Visible = true;
+                sanctions_qc.Enabled = false;
             }
             //else if (adminlevel.Text == "Admin" || processname.Text == "Approvals")//<>Read
             else if(accesslevel.Text != "Read")
@@ -110,6 +113,8 @@ namespace Workflow
                 workflow.Enabled = true;
                 incidentrca.Enabled = true;
                 incidentrca.Visible = true;
+                sanctions_qc.Enabled = true;
+                sanctions_qc.Visible = true;
             }
             else
             {
@@ -121,6 +126,8 @@ namespace Workflow
                 workflow.Enabled = false;
                 incidentrca.Visible = true;
                 incidentrca.Enabled = false;
+                sanctions_qc.Visible = true;
+                sanctions_qc.Enabled = false;
             }
         }
 
@@ -144,6 +151,7 @@ namespace Workflow
             workqueue_qualityandapprovals.Visible = false;
             workflow.Visible = false;
             incidentrca.Visible = false;
+            sanctions_qc.Visible = false;
             processmanuals.Visible = false;
             errortracker.Visible = false;
             searchtool.Visible = false;
@@ -206,6 +214,7 @@ namespace Workflow
             workqueue_qualityandapprovals.Visible = false;
             workflow.Visible = false;
             incidentrca.Visible = false;
+            sanctions_qc.Visible = false;
             randomizer_kyc.Visible = false;
             randomizer_qualityandapprovals.Visible = false;
             qsptracker.Visible = false;
@@ -338,6 +347,7 @@ namespace Workflow
             workqueue_qualityandapprovals.Visible = false;
             workflow.Visible = false;
             incidentrca.Visible = false;
+            sanctions_qc.Visible = false;
             randomizer_kyc.Visible = false;
             randomizer_qualityandapprovals.Visible = false;
             qsptracker.Visible = false;
@@ -597,6 +607,13 @@ namespace Workflow
             this.Hide();
             SearchTool_New_DataMart obj_searchtool = new SearchTool_New_DataMart();
             obj_searchtool.Show();
+        }
+
+        private void sanctions_qc_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Sanctions_QC obj_sanctions_qc = new Sanctions_QC();
+            obj_sanctions_qc.Show();
         }
     }
 }

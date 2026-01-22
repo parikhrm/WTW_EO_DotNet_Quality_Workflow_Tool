@@ -64,6 +64,7 @@
             this.kpiscorecard = new System.Windows.Forms.Button();
             this.qualityreport_powerbi = new System.Windows.Forms.Button();
             this.searchtool_datamart = new System.Windows.Forms.Button();
+            this.sanctions_qc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.menubutton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -180,7 +181,7 @@
             // 
             this.errortracker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.errortracker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errortracker.Location = new System.Drawing.Point(293, 263);
+            this.errortracker.Location = new System.Drawing.Point(293, 261);
             this.errortracker.Name = "errortracker";
             this.errortracker.Size = new System.Drawing.Size(227, 54);
             this.errortracker.TabIndex = 8;
@@ -234,7 +235,7 @@
             // 
             this.qsptracker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.qsptracker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qsptracker.Location = new System.Drawing.Point(292, 263);
+            this.qsptracker.Location = new System.Drawing.Point(293, 263);
             this.qsptracker.Name = "qsptracker";
             this.qsptracker.Size = new System.Drawing.Size(227, 54);
             this.qsptracker.TabIndex = 13;
@@ -255,7 +256,7 @@
             // 
             this.searchtool.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.searchtool.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchtool.Location = new System.Drawing.Point(292, 317);
+            this.searchtool.Location = new System.Drawing.Point(293, 321);
             this.searchtool.Name = "searchtool";
             this.searchtool.Size = new System.Drawing.Size(227, 54);
             this.searchtool.TabIndex = 15;
@@ -379,7 +380,7 @@
             // 
             this.workqueue_qualityandapprovals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.workqueue_qualityandapprovals.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.workqueue_qualityandapprovals.Location = new System.Drawing.Point(292, 157);
+            this.workqueue_qualityandapprovals.Location = new System.Drawing.Point(293, 157);
             this.workqueue_qualityandapprovals.Name = "workqueue_qualityandapprovals";
             this.workqueue_qualityandapprovals.Size = new System.Drawing.Size(227, 54);
             this.workqueue_qualityandapprovals.TabIndex = 29;
@@ -415,7 +416,7 @@
             // 
             this.raisedispute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.raisedispute.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.raisedispute.Location = new System.Drawing.Point(293, 315);
+            this.raisedispute.Location = new System.Drawing.Point(293, 317);
             this.raisedispute.Name = "raisedispute";
             this.raisedispute.Size = new System.Drawing.Size(227, 54);
             this.raisedispute.TabIndex = 32;
@@ -483,12 +484,25 @@
             this.searchtool_datamart.UseVisualStyleBackColor = false;
             this.searchtool_datamart.Click += new System.EventHandler(this.searchtool_datamart_Click);
             // 
+            // sanctions_qc
+            // 
+            this.sanctions_qc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.sanctions_qc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sanctions_qc.Location = new System.Drawing.Point(292, 317);
+            this.sanctions_qc.Name = "sanctions_qc";
+            this.sanctions_qc.Size = new System.Drawing.Size(227, 54);
+            this.sanctions_qc.TabIndex = 38;
+            this.sanctions_qc.Text = "Sanctions QC";
+            this.sanctions_qc.UseVisualStyleBackColor = false;
+            this.sanctions_qc.Click += new System.EventHandler(this.sanctions_qc_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1924, 1020);
+            this.Controls.Add(this.sanctions_qc);
             this.Controls.Add(this.searchtool_datamart);
             this.Controls.Add(this.qualityreport_powerbi);
             this.Controls.Add(this.kpiscorecard);
@@ -574,5 +588,6 @@
         private System.Windows.Forms.Button kpiscorecard;
         private System.Windows.Forms.Button qualityreport_powerbi;
         private System.Windows.Forms.Button searchtool_datamart;
+        private System.Windows.Forms.Button sanctions_qc;
     }
 }

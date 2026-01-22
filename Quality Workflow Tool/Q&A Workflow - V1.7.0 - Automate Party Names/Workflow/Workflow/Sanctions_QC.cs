@@ -948,5 +948,17 @@ namespace Workflow
             Form2 obj_form2 = new Form2();
             obj_form2.Show();
         }
+
+        private void raw_data_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://app.powerbi.com/groups/81c3ab7d-0a2a-46f2-b54f-38eb239011a1/reports/20155e5a-a6d3-46d7-8a52-cfe9bd664249/ReportSection31a41de679b2bcefa277?experience=power-bi");
+            }
+            catch (Exception ab)
+            {
+                MessageBox.Show("Unable to open link that was clicked. Following are the error generated details" + ab.ToString());
+            }
+        }
     }
 }

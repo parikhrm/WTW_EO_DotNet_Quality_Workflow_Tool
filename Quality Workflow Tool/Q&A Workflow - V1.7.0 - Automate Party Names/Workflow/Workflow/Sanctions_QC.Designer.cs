@@ -132,6 +132,7 @@
             this.searchby_requestid_batchid = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.raw_data = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -1178,7 +1179,7 @@
             // 
             // searchby_requestid_batchid
             // 
-            this.searchby_requestid_batchid.Location = new System.Drawing.Point(100, 587);
+            this.searchby_requestid_batchid.Location = new System.Drawing.Point(144, 587);
             this.searchby_requestid_batchid.Name = "searchby_requestid_batchid";
             this.searchby_requestid_batchid.Size = new System.Drawing.Size(300, 26);
             this.searchby_requestid_batchid.TabIndex = 5;
@@ -1187,7 +1188,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(133, 626);
+            this.label25.Location = new System.Drawing.Point(177, 626);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(230, 20);
             this.label25.TabIndex = 6;
@@ -1207,12 +1208,23 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // raw_data
+            // 
+            this.raw_data.Location = new System.Drawing.Point(13, 589);
+            this.raw_data.Name = "raw_data";
+            this.raw_data.Size = new System.Drawing.Size(96, 33);
+            this.raw_data.TabIndex = 75;
+            this.raw_data.Text = "Raw Data";
+            this.raw_data.UseVisualStyleBackColor = true;
+            this.raw_data.Click += new System.EventHandler(this.raw_data_Click);
+            // 
             // Sanctions_QC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.Controls.Add(this.raw_data);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.searchby_requestid_batchid);
@@ -1339,5 +1351,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_LastUpdatedDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_LastUpdatedBy;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button raw_data;
     }
 }

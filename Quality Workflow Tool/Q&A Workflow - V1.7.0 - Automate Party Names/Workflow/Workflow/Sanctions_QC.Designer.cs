@@ -91,7 +91,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.party_name_lookup = new System.Windows.Forms.ComboBox();
-            this.client_country_lookup = new System.Windows.Forms.ComboBox();
             this.legal_entity_name_lookup = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,6 +132,7 @@
             this.label25 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.raw_data = new System.Windows.Forms.Button();
+            this.gcid_partylookup = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -645,14 +645,15 @@
             this.requestid_batchid.Size = new System.Drawing.Size(205, 26);
             this.requestid_batchid.TabIndex = 7;
             this.requestid_batchid.TextChanged += new System.EventHandler(this.requestid_batchid_TextChanged);
+            this.requestid_batchid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.requestid_batchid_KeyDown);
             // 
             // month
             // 
             this.month.CustomFormat = " ";
             this.month.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.month.Location = new System.Drawing.Point(545, 42);
+            this.month.Location = new System.Drawing.Point(503, 42);
             this.month.Name = "month";
-            this.month.Size = new System.Drawing.Size(148, 26);
+            this.month.Size = new System.Drawing.Size(190, 26);
             this.month.TabIndex = 5;
             this.month.ValueChanged += new System.EventHandler(this.month_ValueChanged);
             this.month.KeyDown += new System.Windows.Forms.KeyEventHandler(this.month_KeyDown);
@@ -665,14 +666,14 @@
             "Batch",
             "KYC",
             "OMS"});
-            this.process.Location = new System.Drawing.Point(302, 40);
+            this.process.Location = new System.Drawing.Point(262, 40);
             this.process.Name = "process";
             this.process.Size = new System.Drawing.Size(157, 28);
             this.process.TabIndex = 3;
             // 
             // id
             // 
-            this.id.Location = new System.Drawing.Point(87, 43);
+            this.id.Location = new System.Drawing.Point(51, 43);
             this.id.Name = "id";
             this.id.Size = new System.Drawing.Size(100, 26);
             this.id.TabIndex = 1;
@@ -761,7 +762,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(480, 43);
+            this.label3.Location = new System.Drawing.Point(442, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 20);
             this.label3.TabIndex = 4;
@@ -770,7 +771,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(218, 43);
+            this.label2.Location = new System.Drawing.Point(178, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 2;
@@ -794,20 +795,11 @@
             this.party_name_lookup.Size = new System.Drawing.Size(121, 28);
             this.party_name_lookup.TabIndex = 1;
             // 
-            // client_country_lookup
-            // 
-            this.client_country_lookup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.client_country_lookup.FormattingEnabled = true;
-            this.client_country_lookup.Location = new System.Drawing.Point(643, 6);
-            this.client_country_lookup.Name = "client_country_lookup";
-            this.client_country_lookup.Size = new System.Drawing.Size(121, 28);
-            this.client_country_lookup.TabIndex = 2;
-            // 
             // legal_entity_name_lookup
             // 
             this.legal_entity_name_lookup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.legal_entity_name_lookup.FormattingEnabled = true;
-            this.legal_entity_name_lookup.Location = new System.Drawing.Point(783, 6);
+            this.legal_entity_name_lookup.Location = new System.Drawing.Point(645, 6);
             this.legal_entity_name_lookup.Name = "legal_entity_name_lookup";
             this.legal_entity_name_lookup.Size = new System.Drawing.Size(121, 28);
             this.legal_entity_name_lookup.TabIndex = 3;
@@ -1218,19 +1210,28 @@
             this.raw_data.UseVisualStyleBackColor = true;
             this.raw_data.Click += new System.EventHandler(this.raw_data_Click);
             // 
+            // gcid_partylookup
+            // 
+            this.gcid_partylookup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gcid_partylookup.FormattingEnabled = true;
+            this.gcid_partylookup.Location = new System.Drawing.Point(793, 5);
+            this.gcid_partylookup.Name = "gcid_partylookup";
+            this.gcid_partylookup.Size = new System.Drawing.Size(121, 28);
+            this.gcid_partylookup.TabIndex = 76;
+            // 
             // Sanctions_QC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.Controls.Add(this.gcid_partylookup);
             this.Controls.Add(this.raw_data);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.searchby_requestid_batchid);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.legal_entity_name_lookup);
-            this.Controls.Add(this.client_country_lookup);
             this.Controls.Add(this.party_name_lookup);
             this.Controls.Add(this.groupBox1);
             this.Name = "Sanctions_QC";
@@ -1298,7 +1299,6 @@
         private System.Windows.Forms.ComboBox sanctions_status;
         private System.Windows.Forms.Button insert;
         private System.Windows.Forms.ComboBox party_name_lookup;
-        private System.Windows.Forms.ComboBox client_country_lookup;
         private System.Windows.Forms.ComboBox legal_entity_name_lookup;
         private System.Windows.Forms.Button reset;
         private System.Windows.Forms.Button update;
@@ -1352,5 +1352,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_LastUpdatedBy;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button raw_data;
+        private System.Windows.Forms.ComboBox gcid_partylookup;
     }
 }

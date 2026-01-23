@@ -34,10 +34,10 @@ namespace Workflow
         {
             party_name_lookup.Visible = false;
             party_name_lookup.SelectedIndex = -1;
-            client_country_lookup.Visible = false;
-            client_country_lookup.SelectedIndex = -1;
             legal_entity_name_lookup.Visible = false;
             legal_entity_name_lookup.SelectedIndex = -1;
+            gcid_partylookup.Visible = false;
+            gcid_partylookup.SelectedIndex = -1;
             id.Enabled = false;
             id.Text = string.Empty;
             process.SelectedIndex = -1;
@@ -180,7 +180,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select Requestor_Email_Address,LOB,Country,Sub_Region_Derived,SegmentName from dbo.vw_Globaldirectory_Upload_New where Requestor_Email_address = @Requestor_Email_address union select Requestor_Email_Address,LOB,Requestor_Location,Sub_Region_Derived,SegmentName from dbo.tbl_globaldirectory_sanctions_qc with(nolock) where Requestor_Email_address = @Requestor_Email_address ";
+                cmd.CommandText = "select Requestor_Email_Address,LOB,Country,Sub_Region_New,SegmentName from dbo.vw_Globaldirectory_Upload_New where Requestor_Email_address = @Requestor_Email_address union select Requestor_Email_Address,LOB,Requestor_Location,Sub_Region_Derived,SegmentName from dbo.tbl_globaldirectory_sanctions_qc with(nolock) where Requestor_Email_address = @Requestor_Email_address ";
                 cmd.Parameters.AddWithValue("@Requestor_Email_address", requestor_email_address.Text);
                 sda.SelectCommand = cmd;
                 sda.Fill(dt);
@@ -228,13 +228,43 @@ namespace Workflow
                 party_name_lookup.DisplayMember = "PartyName";
                 party_name.Text = party_name_lookup.Text;
 
-                client_country_lookup.DataSource = dt;
-                client_country_lookup.DisplayMember = "ClientCountry";
-                client_country.Text = client_country_lookup.Text;
+                client_country.DataSource = dt;
+                client_country.DisplayMember = "ClientCountry";
 
                 legal_entity_name_lookup.DataSource = dt;
                 legal_entity_name_lookup.DisplayMember = "LegalEntityName";
                 legal_entity_name.Text = legal_entity_name_lookup.Text;
+
+            }
+            catch (Exception ab)
+            {
+                MessageBox.Show("Error Generated Details : " + ab.ToString());
+            }
+        }
+
+        public void request_details_kyc_gcid()
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            try
+            {
+                SqlDataAdapter sda = new SqlDataAdapter();
+                DataTable dt = new DataTable();
+                conn.ConnectionString = connectionstringtxt;
+                cmd.Connection = conn;
+                conn.Open();
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select * from kycRequest_Request.Item with(nolock) where RequestID = @RequestID";
+                cmd.Parameters.AddWithValue("@RequestID", requestid_batchid.Text);
+                sda.SelectCommand = cmd;
+                sda.Fill(dt);
+
+                gcid_partylookup.DataSource = dt;
+                gcid_partylookup.DisplayMember = "GCID";
+                gcid_trackingid.Text = gcid_partylookup.Text;
 
             }
             catch (Exception ab)
@@ -258,7 +288,7 @@ namespace Workflow
                 conn.Open();
                 cmd.Parameters.Clear();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select a.RequestId,a.ResultName as PartyName, b.ShortName as CountryName from kycRequest_Request.Item a with(nolock) inner join [kycrequest_Ref].[Country] b with(nolock) on a.CountryCode = b.CountryAlpha2Code where a.RequestID = @RequestID";
+                cmd.CommandText = "select a.RequestId,a.ResultName as PartyName, b.ShortName, GCID as CountryName from kycRequest_Request.Item a with(nolock) inner join [kycrequest_Ref].[Country] b with(nolock) on a.CountryCode = b.CountryAlpha2Code where a.RequestID = @RequestID";
                 cmd.Parameters.AddWithValue("@RequestID", requestid_batchid.Text);
                 sda.SelectCommand = cmd;
                 sda.Fill(dt);
@@ -267,9 +297,8 @@ namespace Workflow
                 party_name_lookup.DisplayMember = "PartyName";
                 party_name.Text = party_name_lookup.Text;
 
-                client_country_lookup.DataSource = dt;
-                client_country_lookup.DisplayMember = "ClientCountry";
-                client_country.Text = client_country_lookup.Text;
+                client_country.DataSource = dt;
+                client_country.DisplayMember = "ClientCountry";
 
             }
             catch (Exception ab)
@@ -587,14 +616,15 @@ namespace Workflow
 
         private void requestid_batchid_TextChanged(object sender, EventArgs e)
         {
-            if (process.Text == "KYC")
-            {
-                request_details_kyc();
-            }
-            if (process.Text == "OMS")
-            {
-                request_details_oms();
-            }
+            //if (process.Text == "KYC")
+            //{
+            //    request_details_kyc();
+            //    request_details_kyc_gcid();
+            //}
+            //if (process.Text == "OMS")
+            //{
+            //    request_details_oms();
+            //}
         }
 
         private void reset_Click(object sender, EventArgs e)
@@ -958,6 +988,22 @@ namespace Workflow
             catch (Exception ab)
             {
                 MessageBox.Show("Unable to open link that was clicked. Following are the error generated details" + ab.ToString());
+            }
+        }
+
+        private void requestid_batchid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                if (process.Text == "KYC")
+                {
+                    request_details_kyc();
+                    request_details_kyc_gcid();
+                }
+                if (process.Text == "OMS")
+                {
+                    request_details_oms();
+                }
             }
         }
     }

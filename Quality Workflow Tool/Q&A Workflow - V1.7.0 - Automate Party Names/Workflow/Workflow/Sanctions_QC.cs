@@ -428,30 +428,191 @@ namespace Workflow
                     cmd.CommandText = "dbo.usp_sanctions_qc_insert_dotnet";
                     cmd.Parameters.Add("@Message", SqlDbType.NVarChar, 1000);
                     cmd.Parameters["@Message"].Direction = ParameterDirection.Output;
+                    if (string.IsNullOrEmpty(process.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Process", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Process", process.Text);
+                    }
+                    if (month.Text.Trim() == string.Empty)
+                    {
 
-                    cmd.Parameters.AddWithValue("@Process", process.Text);
-                    cmd.Parameters.AddWithValue("@Month", month.Value.Date);
-                    cmd.Parameters.AddWithValue("@RequestID_BatchID", requestid_batchid.Text);
-                    cmd.Parameters.AddWithValue("@GCID_TrackingID", gcid_trackingid.Text);
-                    cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", legal_entity_name.Text);
-                    cmd.Parameters.AddWithValue("@Party_Name", party_name.Text);
-                    cmd.Parameters.AddWithValue("@Principle_Name", principal_name.Text);
-                    cmd.Parameters.AddWithValue("@Client_Country", client_country.Text);
-                    cmd.Parameters.AddWithValue("@Client_Risk_Category", client_risk_category.Text);
-                    cmd.Parameters.AddWithValue("@Global_Sanctions", global_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", type_of_global_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Regional_Sanctions", regional_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Regional_Sanction_Type", regional_sanctions_type.Text);
-                    cmd.Parameters.AddWithValue("@Segment_Name", segment.Text);
-                    cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", sanctions_identified_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", sanctions_notified_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Request_Completion_Date", completion_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Requestor_Email_Address", requestor_email_address.Text);
-                    cmd.Parameters.AddWithValue("@LOB", lob.Text);
-                    cmd.Parameters.AddWithValue("@Requestor_Location", requestor_location.Text);
-                    cmd.Parameters.AddWithValue("@Region", region.Text);
-                    cmd.Parameters.AddWithValue("@Sanctions_Status", sanctions_status.Text);
-                    cmd.Parameters.AddWithValue("@Comments", comments.Text);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Month", month.Value.Date);
+                    }
+                    if (string.IsNullOrEmpty(requestid_batchid.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@RequestID_BatchID", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@RequestID_BatchID", requestid_batchid.Text);
+                    }
+                    if (string.IsNullOrEmpty(gcid_trackingid.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@GCID_TrackingID", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@GCID_TrackingID", gcid_trackingid.Text);
+                    }
+                    if (string.IsNullOrEmpty(legal_entity_name.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", legal_entity_name.Text);
+                    }
+                    if (string.IsNullOrEmpty(party_name.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Party_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Party_Name", party_name.Text);
+                    }
+                    if (string.IsNullOrEmpty(principal_name.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Principle_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Principle_Name", principal_name.Text);
+                    }
+                    if (string.IsNullOrEmpty(client_country.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Country", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Country", client_country.Text);
+                    }
+                    if (string.IsNullOrEmpty(client_risk_category.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Risk_Category", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Risk_Category", client_risk_category.Text);
+                    }
+                    if (string.IsNullOrEmpty(global_sanctions.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Global_Sanctions", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Global_Sanctions", global_sanctions.Text);
+                    }
+                    if (string.IsNullOrEmpty(type_of_global_sanctions.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", type_of_global_sanctions.Text);
+                    }
+                    if (string.IsNullOrEmpty(regional_sanctions.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanctions", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanctions", regional_sanctions.Text);
+                    }
+                    if (string.IsNullOrEmpty(regional_sanctions_type.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanction_Type", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanction_Type", regional_sanctions_type.Text);
+                    }
+                    if (string.IsNullOrEmpty(segment.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Segment_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Segment_Name", segment.Text);
+                    }
+                    if (sanctions_identified_date.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", sanctions_identified_date.Value.Date);
+                    }
+                    if (sanctions_notified_date.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", sanctions_notified_date.Value.Date);
+                    }
+                    if (completion_date.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Request_Completion_Date", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Request_Completion_Date", completion_date.Value.Date);
+                    }
+                    if (string.IsNullOrEmpty(requestor_email_address.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Email_Address", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Email_Address", requestor_email_address.Text);
+                    }
+                    if (string.IsNullOrEmpty(lob.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@LOB", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@LOB", lob.Text);
+                    }
+                    if (string.IsNullOrEmpty(requestor_location.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Location", requestor_location.Text);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Location", DBNull.Value);
+                    }
+                    if(string.IsNullOrEmpty(region.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Region", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Region", region.Text);
+                    }
+                    if(string.IsNullOrEmpty(sanctions_status.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Status", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Status", sanctions_status.Text);
+                    }
+                    if (string.IsNullOrEmpty(comments.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Comments", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Comments", comments.Text);
+                    }
+                        
                     cmd.Parameters.AddWithValue("@LastUpdatedBy", Environment.UserName.ToString());
                     if (string.IsNullOrEmpty(relationship_type.Text))
                     {
@@ -661,30 +822,192 @@ namespace Workflow
                     cmd.Parameters.Add("@Message", SqlDbType.NVarChar, 1000);
                     cmd.Parameters["@Message"].Direction = ParameterDirection.Output;
 
-                    cmd.Parameters.AddWithValue("@Process", process.Text);
                     cmd.Parameters.AddWithValue("@ID", id.Text);
-                    cmd.Parameters.AddWithValue("@Month", month.Value.Date);
-                    cmd.Parameters.AddWithValue("@RequestID_BatchID", requestid_batchid.Text);
-                    cmd.Parameters.AddWithValue("@GCID_TrackingID", gcid_trackingid.Text);
-                    cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", legal_entity_name.Text);
-                    cmd.Parameters.AddWithValue("@Party_Name", party_name.Text);
-                    cmd.Parameters.AddWithValue("@Principle_Name", principal_name.Text);
-                    cmd.Parameters.AddWithValue("@Client_Country", client_country.Text);
-                    cmd.Parameters.AddWithValue("@Client_Risk_Category", client_risk_category.Text);
-                    cmd.Parameters.AddWithValue("@Global_Sanctions", global_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", type_of_global_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Regional_Sanctions", regional_sanctions.Text);
-                    cmd.Parameters.AddWithValue("@Regional_Sanction_Type", regional_sanctions_type.Text);
-                    cmd.Parameters.AddWithValue("@Segment_Name", segment.Text);
-                    cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", sanctions_identified_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", sanctions_notified_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Request_Completion_Date", completion_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Requestor_Email_Address", requestor_email_address.Text);
-                    cmd.Parameters.AddWithValue("@LOB", lob.Text);
-                    cmd.Parameters.AddWithValue("@Requestor_Location", requestor_location.Text);
-                    cmd.Parameters.AddWithValue("@Region", region.Text);
-                    cmd.Parameters.AddWithValue("@Sanctions_Status", sanctions_status.Text);
-                    cmd.Parameters.AddWithValue("@Comments", comments.Text);
+                    if (string.IsNullOrEmpty(process.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Process", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Process", process.Text);
+                    }
+                    if (month.Text.Trim() == string.Empty)
+                    {
+
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Month", month.Value.Date);
+                    }
+                    if (string.IsNullOrEmpty(requestid_batchid.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@RequestID_BatchID", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@RequestID_BatchID", requestid_batchid.Text);
+                    }
+                    if (string.IsNullOrEmpty(gcid_trackingid.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@GCID_TrackingID", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@GCID_TrackingID", gcid_trackingid.Text);
+                    }
+                    if (string.IsNullOrEmpty(legal_entity_name.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@WTW_Legal_Entity_Name", legal_entity_name.Text);
+                    }
+                    if (string.IsNullOrEmpty(party_name.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Party_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Party_Name", party_name.Text);
+                    }
+                    if (string.IsNullOrEmpty(principal_name.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Principle_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Principle_Name", principal_name.Text);
+                    }
+                    if (string.IsNullOrEmpty(client_country.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Country", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Country", client_country.Text);
+                    }
+                    if (string.IsNullOrEmpty(client_risk_category.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Risk_Category", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Client_Risk_Category", client_risk_category.Text);
+                    }
+                    if (string.IsNullOrEmpty(global_sanctions.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Global_Sanctions", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Global_Sanctions", global_sanctions.Text);
+                    }
+                    if (string.IsNullOrEmpty(type_of_global_sanctions.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Type_Of_Global_Sanctions", type_of_global_sanctions.Text);
+                    }
+                    if (string.IsNullOrEmpty(regional_sanctions.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanctions", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanctions", regional_sanctions.Text);
+                    }
+                    if (string.IsNullOrEmpty(regional_sanctions_type.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanction_Type", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Regional_Sanction_Type", regional_sanctions_type.Text);
+                    }
+                    if (string.IsNullOrEmpty(segment.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Segment_Name", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Segment_Name", segment.Text);
+                    }
+                    if (sanctions_identified_date.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Identified_Date", sanctions_identified_date.Value.Date);
+                    }
+                    if (sanctions_notified_date.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Notified_Date", sanctions_notified_date.Value.Date);
+                    }
+                    if (completion_date.Text.Trim() == string.Empty)
+                    {
+                        cmd.Parameters.AddWithValue("@Request_Completion_Date", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Request_Completion_Date", completion_date.Value.Date);
+                    }
+                    if (string.IsNullOrEmpty(requestor_email_address.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Email_Address", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Email_Address", requestor_email_address.Text);
+                    }
+                    if (string.IsNullOrEmpty(lob.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@LOB", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@LOB", lob.Text);
+                    }
+                    if (string.IsNullOrEmpty(requestor_location.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Location", requestor_location.Text);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Requestor_Location", DBNull.Value);
+                    }
+                    if (string.IsNullOrEmpty(region.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Region", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Region", region.Text);
+                    }
+                    if (string.IsNullOrEmpty(sanctions_status.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Status", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Sanctions_Status", sanctions_status.Text);
+                    }
+                    if (string.IsNullOrEmpty(comments.Text))
+                    {
+                        cmd.Parameters.AddWithValue("@Comments", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Comments", comments.Text);
+                    }
+
                     cmd.Parameters.AddWithValue("@LastUpdatedBy", Environment.UserName.ToString());
                     if (string.IsNullOrEmpty(relationship_type.Text))
                     {
@@ -726,6 +1049,7 @@ namespace Workflow
                     {
                         cmd.Parameters.AddWithValue("@Chaser2_Sent", chaser2_sent.Value.Date);
                     }
+
 
                     //If conditions
                     if (string.IsNullOrEmpty(process.Text))

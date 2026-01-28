@@ -70,6 +70,15 @@ namespace Workflow
             chaser2_sent.CustomFormat = " ";
             insert.Enabled = true;
             update.Enabled = false;
+            requestor_email_address.Enabled = true;
+            segment.Enabled = true;
+            lob.Enabled = true;
+            region.Enabled = true;
+            requestor_location.Enabled = true;
+            legal_entity_name.Enabled = true;
+            sanctions_risk_status.Enabled = true;
+            chaser1_sent.Enabled = true;
+            chaser2_sent.Enabled = true;
             datagridview_display_overall();
         }
 
@@ -1328,6 +1337,43 @@ namespace Workflow
                 {
                     request_details_oms();
                 }
+            }
+        }
+
+        private void sanctions_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(sanctions_status.Text == "Sanctions Flagging on Eclipse")
+            {
+                requestor_email_address.Text = string.Empty;
+                requestor_email_address.Enabled = false;
+                segment.SelectedIndex = -1;
+                segment.Enabled = false;
+                lob.SelectedIndex = -1;
+                lob.Enabled = false;
+                region.SelectedIndex = -1;
+                region.Enabled = false;
+                requestor_location.SelectedIndex = -1;
+                requestor_location.Enabled = false;
+                legal_entity_name.Text = string.Empty;
+                legal_entity_name.Enabled = false;
+                sanctions_risk_status.SelectedIndex = -1;
+                sanctions_risk_status.Enabled = false;
+                chaser1_sent.CustomFormat = " ";
+                chaser1_sent.Enabled = false;
+                chaser2_sent.CustomFormat = " ";
+                chaser2_sent.Enabled = false;
+            }
+            else
+            {
+                requestor_email_address.Enabled = true;
+                segment.Enabled = true;
+                lob.Enabled = true;
+                region.Enabled = true;
+                requestor_location.Enabled = true;
+                legal_entity_name.Enabled = true;
+                sanctions_risk_status.Enabled = true;
+                chaser1_sent.Enabled = true;
+                chaser2_sent.Enabled = true;
             }
         }
     }

@@ -338,11 +338,13 @@
             this.sanctions_status.FormattingEnabled = true;
             this.sanctions_status.Items.AddRange(new object[] {
             "Accept Conditional",
-            "Mismatch"});
-            this.sanctions_status.Location = new System.Drawing.Point(503, 334);
+            "Mismatch",
+            "Sanctions Flagging on Eclipse"});
+            this.sanctions_status.Location = new System.Drawing.Point(488, 334);
             this.sanctions_status.Name = "sanctions_status";
-            this.sanctions_status.Size = new System.Drawing.Size(248, 28);
+            this.sanctions_status.Size = new System.Drawing.Size(263, 28);
             this.sanctions_status.TabIndex = 46;
+            this.sanctions_status.SelectedIndexChanged += new System.EventHandler(this.sanctions_status_SelectedIndexChanged);
             // 
             // insert
             // 
@@ -359,7 +361,7 @@
             this.comments.Location = new System.Drawing.Point(804, 410);
             this.comments.Multiline = true;
             this.comments.Name = "comments";
-            this.comments.Size = new System.Drawing.Size(459, 33);
+            this.comments.Size = new System.Drawing.Size(635, 93);
             this.comments.TabIndex = 58;
             // 
             // label24
@@ -374,7 +376,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(417, 334);
+            this.label23.Location = new System.Drawing.Point(402, 334);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 40);
             this.label23.TabIndex = 45;
